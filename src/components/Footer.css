@@ -1,0 +1,74 @@
+/* Footer.css */
+.footer-container {
+  background-color: var(--charcoal);
+  color: var(--light-grey);
+  margin-top: auto;
+}
+
+.footer-top {
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  margin-bottom: 1rem;
+}
+
+.footer-about {
+  color: #9ca3af;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.footer-heading {
+  color: var(--white);
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-links a {
+  color: #9ca3af;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.footer-links a:hover {
+  color: var(--safety-yellow);
+  transform: translateX(4px);
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: #9ca3af;
+  line-height: 1.6;
+}
+
+.footer-bottom {
+  background-color: var(--navy-blue);
+  padding: 1.5rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #9ca3af;
+}

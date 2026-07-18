@@ -1,0 +1,73 @@
+/* ServiceCard.css */
+.service-card {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  border: 1px solid #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(15, 71, 97, 0.1); /* Steel Blue subtle */
+}
+
+.service-card-icon {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(15, 71, 97, 0.1); /* Steel Blue tint */
+  color: var(--steel-blue);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+}
+
+.service-card:hover .service-card-icon {
+  background-color: var(--steel-blue);
+  color: var(--white);
+}
+
+.service-card-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--charcoal);
+}
+
+.service-card-desc {
+  color: var(--concrete-grey);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.service-applications {
+  font-size: 0.85rem;
+  color: var(--charcoal);
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+  background-color: var(--light-grey);
+  border-radius: var(--radius-sm);
+}
+
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--steel-blue);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  margin-top: auto;
+}
+
+.service-card-link:hover {
+  color: var(--safety-orange);
+  gap: 0.75rem;
+}
