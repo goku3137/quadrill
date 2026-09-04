@@ -20,7 +20,7 @@ const Gallery = () => {
     : images.filter(img => img.category === activeTab);
 
   return (
-    <div className="page-gallery bg-light">
+    <div className="page-gallery">
       <HeroBanner 
         title="Project & Equipment Gallery"
         subtitle="Visual proof of our technical capability and execution."

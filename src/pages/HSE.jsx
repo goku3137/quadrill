@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HeroBanner from '../components/HeroBanner';
+
 import { ShieldCheck, HardHat, AlertTriangle, Crosshair, Wind, Waves, Anchor, Recycle } from 'lucide-react';
 
 const HseStep = ({ number, icon: Icon, title, desc }) => (
@@ -68,6 +70,28 @@ const HSE = () => {
               <HseStep number="7" icon={ShieldCheck} title="Worksite Control" desc="Proper barricading, signposting, and controlled safety zones for cutting and demolition operations." />
               <HseStep number="8" icon={Waves} title="Marine Safety" desc="Specialized protocols for underwater cutting: diver safety, visibility control, and communication systems." />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="section" style={{ 
+        background: 'linear-gradient(135deg, var(--charcoal) 0%, var(--steel-blue) 100%)',
+        textAlign: 'center'
+      }}>
+        <div className="container" style={{ maxWidth: '700px' }}>
+          <ShieldCheck size={56} color="var(--safety-yellow)" style={{ margin: '0 auto 1.5rem' }} />
+          <h2 style={{ color: 'var(--white)', fontSize: '2rem', marginBottom: '1rem' }}>
+            Discuss Your Project Safety Requirements
+          </h2>
+          <p style={{ color: 'var(--light-grey)', fontSize: '1.1rem', marginBottom: '2rem' }}>
+            Our HSE Manager and engineering team are ready to review your site conditions and provide a compliant, safety-first execution plan.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link to="/contact" className="btn btn-primary">Contact Our HSE Team</Link>
+            <a href="tel:+971502340364" className="btn" style={{ backgroundColor: 'transparent', border: '2px solid var(--white)', color: 'var(--white)' }}>
+              Call +971 50 234 0364
+            </a>
           </div>
         </div>
       </section>

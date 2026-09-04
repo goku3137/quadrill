@@ -33,13 +33,14 @@ const Footer = () => {
         <div className="footer-col">
           <h4 className="footer-heading">Our Services</h4>
           <ul className="footer-links">
-            <li><Link to="/services"><ChevronRight size={14} /> Controlled Demolition</Link></li>
-            <li><Link to="/services"><ChevronRight size={14} /> Concrete Cutting</Link></li>
-            <li><Link to="/services"><ChevronRight size={14} /> Underwater Cutting</Link></li>
-            <li><Link to="/services"><ChevronRight size={14} /> Hydro Demolition</Link></li>
-            <li><Link to="/services"><ChevronRight size={14} /> Structural Dismantling</Link></li>
+            <li><Link to="/services#demolition"><ChevronRight size={14} /> Controlled Demolition</Link></li>
+            <li><Link to="/services#concrete-cutting"><ChevronRight size={14} /> Concrete Cutting</Link></li>
+            <li><Link to="/services#marine"><ChevronRight size={14} /> Underwater Cutting</Link></li>
+            <li><Link to="/services#marine"><ChevronRight size={14} /> Hydro Demolition</Link></li>
+            <li><Link to="/services#demolition"><ChevronRight size={14} /> Structural Dismantling</Link></li>
           </ul>
         </div>
+
 
         {/* Contact Info */}
         <div className="footer-col">

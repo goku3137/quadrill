@@ -2,9 +2,9 @@
 .hero-banner {
   position: relative;
   width: 100%;
-  min-height: 500px;
-  height: 60vh;
-  max-height: 800px;
+  min-height: 580px;
+  height: 70vh;
+  max-height: 900px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -28,7 +28,7 @@
   z-index: 2;
   color: var(--white);
   max-width: 800px;
-  padding: 0 1rem;
+  padding: 4rem 1rem 5rem;
 }
 
 .hero-title {
