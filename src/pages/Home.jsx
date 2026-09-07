@@ -14,28 +14,31 @@ const Home = () => {
         imageSrc="https://images.unsplash.com/photo-1541888087405-eb813d04c40b?auto=format&fit=crop&q=80&w=1920"
       />
 
+      {/* Divider stripe */}
+      <div style={{ height: '6px', background: 'linear-gradient(90deg, var(--safety-yellow), var(--safety-orange))' }} />
+
       {/* Intro Section */}
       <section className="section bg-light">
-        <div className="container grid-2" style={{ alignItems: 'center' }}>
+        <div className="container grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
           <div className="intro-content">
-            <h2 className="text-primary" style={{ marginBottom: '1rem', fontSize: '2rem' }}>
-              Built on 10+ Years of Professional Team Experience
+            <p className="text-accent" style={{ fontWeight: '700', fontSize: '0.9rem', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '1rem' }}>
+              UAE-Based Specialists
+            </p>
+            <h2 className="text-primary" style={{ marginBottom: '1.5rem', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', lineHeight: '1.2' }}>
+              10+ Years of Professional Team Experience
             </h2>
-            <p className="text-secondary" style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>
-              Quadrill Demolition LLC is a leading UAE-based specialist in demolition, concrete cutting, and underwater cutting services across the UAE and international markets.
+            <p className="text-secondary" style={{ marginBottom: '2rem', fontSize: '1.05rem', lineHeight: '1.8' }}>
+              Quadrill Demolition LLC delivers safe, precise, and technically advanced demolition, concrete cutting, and underwater cutting services across the UAE and international markets — from complex structural removal to specialized marine cutting operations.
             </p>
-            <p className="text-secondary" style={{ marginBottom: '2rem' }}>
-              Our crew has successfully executed global-scale demolition and concrete cutting works, including complex structural removal, controlled demolition, heavy-duty concrete sawing, core drilling, and specialized underwater cutting operations.
-            </p>
-            <ul style={{ marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '500' }}>
-                <ShieldCheck className="text-accent" /> Strict compliance to international standards
+            <ul style={{ marginBottom: '2.5rem', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontWeight: '500' }}>
+                <ShieldCheck size={20} className="text-accent" /> Strict compliance to international standards
               </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '500' }}>
-                <ShieldCheck className="text-accent" /> Trusted partner for marine infrastructure
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontWeight: '500' }}>
+                <ShieldCheck size={20} className="text-accent" /> Trusted partner for marine infrastructure
               </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '500' }}>
-                <ShieldCheck className="text-accent" /> Uncompromising safety standards
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontWeight: '500' }}>
+                <ShieldCheck size={20} className="text-accent" /> Uncompromising safety standards
               </li>
             </ul>
             <Link to="/about" className="btn btn-secondary">Learn More About Us</Link>
@@ -44,11 +47,12 @@ const Home = () => {
             <img 
               src="https://images.unsplash.com/photo-1504307651254-35680f356f58?auto=format&fit=crop&q=80&w=800" 
               alt="Professional Demolition and Construction site" 
-              style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '400px' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '420px' }}
             />
           </div>
         </div>
       </section>
+
 
       {/* Services Preview Section */}
       <section className="section">

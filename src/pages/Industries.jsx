@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HeroBanner from '../components/HeroBanner';
 import { 
   Building2, Anchor, Droplets, Factory, Zap, 
-  Truck, Home, Plane, ShieldAlert, Train 
+  Truck, Home, Plane, ShieldAlert, Train, Wrench
 } from 'lucide-react';
+
 
 const IndustryCard = ({ icon: Icon, title, description }) => (
   <div style={{ 
@@ -81,6 +83,11 @@ const Industries = () => {
       icon: Plane,
       title: "Airports & Aviation Facilities",
       description: "Concrete cutting, slab removal, and structural demolition for runways, taxiways, terminals, and aviation support buildings."
+    },
+    {
+      icon: Wrench,
+      title: "Utilities & MEP Contractors",
+      description: "Core drilling, wall sawing, and floor sawing for electrical, plumbing, HVAC, and utility installations in commercial and industrial environments."
     }
   ];
 
@@ -104,6 +111,19 @@ const Industries = () => {
               <IndustryCard key={index} {...ind} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="section bg-dark" style={{ textAlign: 'center' }}>
+        <div className="container" style={{ maxWidth: '700px' }}>
+          <h2 style={{ color: 'var(--white)', fontSize: '2rem', marginBottom: '1rem' }}>
+            Operating in Your Sector?
+          </h2>
+          <p style={{ color: 'var(--light-grey)', fontSize: '1.1rem', marginBottom: '2rem' }}>
+            Contact our team to discuss your specific project requirements and get a tailored quotation.
+          </p>
+          <Link to="/contact" className="btn btn-primary">Request a Quote</Link>
         </div>
       </section>
     </div>

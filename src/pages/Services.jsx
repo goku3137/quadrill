@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Hammer, Anchor, Settings, Zap, Droplets, HardHat } from 'lucide-react';
 import HeroBanner from '../components/HeroBanner';
 import ServiceCard from '../components/ServiceCard';
@@ -125,7 +126,7 @@ const Services = () => {
             <p style={{ color: 'var(--light-grey)', fontSize: '1.1rem', marginBottom: '2rem' }}>
               We provide precise cutting solutions for complex marine environments, including quay walls, jetties, bridge foundations, offshore platforms, and port infrastructure—executed safely and efficiently.
             </p>
-            <a href="/contact" className="btn btn-primary">Request a Quote for Marine Works</a>
+            <Link to="/contact" className="btn btn-primary">Request a Quote for Marine Works</Link>
           </div>
           <div style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '4px solid rgba(255,255,255,0.1)' }}>
             <img 
@@ -138,7 +139,7 @@ const Services = () => {
       </section>
 
       {/* Demolition Services */}
-      <section className="section bg-light">
+      <section className="section bg-light" id="demolition">
         <div className="container">
           <div className="section-header">
             <h2>Demolition Services</h2>
@@ -150,13 +151,13 @@ const Services = () => {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <a href="/contact" className="btn btn-secondary">Request a Quote for Demolition</a>
+            <Link to="/contact" className="btn btn-secondary">Request a Quote for Demolition</Link>
           </div>
         </div>
       </section>
 
       {/* Concrete Cutting Services */}
-      <section className="section">
+      <section className="section" id="concrete-cutting">
         <div className="container">
           <div className="section-header">
             <h2>Concrete Cutting & Drilling</h2>
@@ -168,13 +169,13 @@ const Services = () => {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <a href="/contact" className="btn btn-secondary">Request a Quote for Concrete Cutting</a>
+            <Link to="/contact" className="btn btn-secondary">Request a Quote for Concrete Cutting</Link>
           </div>
         </div>
       </section>
 
       {/* Specialized Services */}
-      <section className="section bg-light">
+      <section className="section bg-light" id="marine">
         <div className="container">
           <div className="section-header">
             <h2>Marine & Specialized Works</h2>
@@ -186,7 +187,7 @@ const Services = () => {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <a href="/contact" className="btn btn-secondary">Request a Quote for Specialized Services</a>
+            <Link to="/contact" className="btn btn-secondary">Request a Quote for Specialized Services</Link>
           </div>
         </div>
       </section>

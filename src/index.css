@@ -40,6 +40,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 body {
   font-family: var(--font-body);
   color: var(--charcoal);
@@ -192,3 +197,18 @@ textarea.form-control {
   min-height: 120px;
   resize: vertical;
 }
+
+/* Utility: lift card on hover */
+.hover-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Offset sections so sticky header doesn't cover them */
+.section {
+  scroll-margin-top: 120px; /* approx header height (top-bar + nav) */
+}
+
