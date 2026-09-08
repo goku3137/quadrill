@@ -107,8 +107,9 @@ const Equipment = () => {
     <div className="page-equipment bg-light">
       <HeroBanner 
         title="Our Equipment"
-        subtitle="Advanced machinery and state-of-the-art tools ensuring precision and safety."
-        imageSrc="https://images.unsplash.com/photo-1541888087405-eb813d04c40b?auto=format&fit=crop&q=80&w=1920"
+        subtitle="State-of-the-art machinery for precision demolition, cutting, and drilling."
+        imageSrc={heroImg}
+        showCtas={false}
       />
 
       <section className="section">

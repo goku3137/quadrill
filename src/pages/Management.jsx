@@ -59,9 +59,10 @@ const Management = () => {
   return (
     <div className="page-management bg-light">
       <HeroBanner 
-        title="Management Message"
-        subtitle="Led by industry veterans with over 10 years of global project experience."
-        imageSrc="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1920"
+        title="Message from Management"
+        subtitle="Committed to excellence, safety, and sustainable growth in every project."
+        imageSrc={heroImg}
+        showCtas={false}
       />
 
       <section className="section">

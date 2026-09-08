@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroBanner from '../components/HeroBanner';
 import { Briefcase, UserCheck, HeartHandshake, FileText } from 'lucide-react';
+import heroImg from '../assets/hse-ppe-premium.webp';
 
 const Careers = () => {
   const handleCareersSubmit = (e) => {
@@ -25,7 +26,7 @@ Experience: ${data.experience} years
       <HeroBanner 
         title="Join Our Team"
         subtitle="Build your career with a team committed to safety, precision, and high-quality execution."
-        imageSrc="https://images.unsplash.com/photo-1541888087405-eb813d04c40b?auto=format&fit=crop&q=80&w=1920"
+        imageSrc={heroImg}
         showCtas={false}
       />
 

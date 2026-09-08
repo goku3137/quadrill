@@ -1,14 +1,17 @@
 import React from 'react';
-import { Target, Globe, Lightbulb, Shield } from 'lucide-react';
 import HeroBanner from '../components/HeroBanner';
+import { Eye, Target, TrendingUp, Globe } from 'lucide-react';
+import heroImg from '../assets/projects-hero-premium.webp';
+import { Lightbulb, Shield } from 'lucide-react';
 
 const Vision = () => {
   return (
     <div className="page-vision">
       <HeroBanner 
-        title="Our Vision"
-        subtitle="Setting new industry benchmarks in high-precision demolition and marine cutting."
-        imageSrc="https://images.unsplash.com/photo-1541888087405-eb813d04c40b?auto=format&fit=crop&q=80&w=1920"
+        title="Vision & Mission"
+        subtitle="Driving the future of the demolition and construction industry with precision, innovation, and unwavering safety."
+        imageSrc={heroImg}
+        showCtas={false}
       />
 
       <section className="section">
