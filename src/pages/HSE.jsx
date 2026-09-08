@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import HeroBanner from '../components/HeroBanner';
 
 import { ShieldCheck, HardHat, AlertTriangle, Crosshair, Wind, Waves, Anchor, Recycle } from 'lucide-react';
+import heroImg from '../assets/hse-hero-premium.webp';
+import ppeImg from '../assets/hse-ppe-premium.webp';
 
 const HseStep = ({ number, icon: Icon, title, desc }) => (
   <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '2rem' }}>
@@ -25,7 +27,7 @@ const HSE = () => {
       <HeroBanner 
         title="Health, Safety & Environment"
         subtitle="Uncompromised safety across all project environments. Zero incidents mindset."
-        imageSrc="https://images.unsplash.com/photo-1541888087405-eb813d04c40b?auto=format&fit=crop&q=80&w=1920"
+        imageSrc={heroImg}
         primaryCtaText="Discuss Safety Requirements"
       />
 
@@ -44,8 +46,8 @@ const HSE = () => {
             </p>
             <a href="/contact" className="btn btn-secondary">Contact HSE Manager</a>
           </div>
-          <div style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', boxShadow: 'var(--shadow-md)' }}>
-            <img src="https://images.unsplash.com/photo-1582214400192-36c1e55b4be3?auto=format&fit=crop&w=800" alt="Construction Safety PPE" style={{ width: '100%', display: 'block' }} />
+          <div className="hover-lift" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', boxShadow: 'var(--shadow-md)' }}>
+            <img src={ppeImg} alt="Construction Safety PPE" className="pro-image" style={{ width: '100%', display: 'block' }} />
           </div>
         </div>
       </section>

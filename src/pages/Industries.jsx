@@ -5,6 +5,7 @@ import {
   Building2, Anchor, Droplets, Factory, Zap, 
   Truck, Home, Plane, ShieldAlert, Train, Wrench
 } from 'lucide-react';
+import heroImg from '../assets/industries-hero-premium.webp';
 
 
 const IndustryCard = ({ icon: Icon, title, description }) => (
@@ -96,7 +97,7 @@ const Industries = () => {
       <HeroBanner 
         title="Industries Served"
         subtitle="Specialized demolition and cutting solutions across multiple complex sectors."
-        imageSrc="https://images.unsplash.com/photo-1541888087405-eb813d04c40b?auto=format&fit=crop&q=80&w=1920"
+        imageSrc={heroImg}
       />
 
       <section className="section">

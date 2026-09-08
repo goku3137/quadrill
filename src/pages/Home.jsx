@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ShieldCheck, Anchor, Hammer, Factory, Building2, Truck, Settings } from 'lucide-react';
 import HeroBanner from '../components/HeroBanner';
 import ServiceCard from '../components/ServiceCard';
+import heroImg from '../assets/home-hero-premium.webp';
+import introImg from '../assets/home-intro-premium.webp';
 
 const Home = () => {
   return (
@@ -11,7 +13,7 @@ const Home = () => {
       <HeroBanner 
         title="Precision Demolition, Concrete Cutting & Underwater Cutting Specialists."
         subtitle="Safe, precise, and technically advanced demolition and cutting services for complex structural, industrial, and marine environments."
-        imageSrc="https://images.unsplash.com/photo-1541888087405-eb813d04c40b?auto=format&fit=crop&q=80&w=1920"
+        imageSrc={heroImg}
       />
 
       {/* Divider stripe */}
@@ -45,8 +47,9 @@ const Home = () => {
           </div>
           <div className="intro-image" style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
             <img 
-              src="https://images.unsplash.com/photo-1504307651254-35680f356f58?auto=format&fit=crop&q=80&w=800" 
+              src={introImg} 
               alt="Professional Demolition and Construction site" 
+              className="pro-image"
               style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '420px' }}
             />
           </div>

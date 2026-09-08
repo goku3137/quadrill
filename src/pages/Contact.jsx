@@ -15,6 +15,23 @@ const ContactInfoCard = ({ icon: Icon, title, content }) => (
 );
 
 const Contact = () => {
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    
+    const text = `*New Contact Inquiry*
+*Name:* ${data.name}
+*Company:* ${data.company || 'N/A'}
+*Phone:* ${data.phone}
+*Email:* ${data.email}
+*Service:* ${data.service}
+*Location:* ${data.location || 'N/A'}
+*Message:* ${data.message}`;
+
+    window.open(`https://wa.me/971502340364?text=${encodeURIComponent(text)}`, '_blank');
+  };
+
   return (
     <div className="page-contact bg-light">
       <HeroBanner 
@@ -31,30 +48,30 @@ const Contact = () => {
             <h3 style={{ fontSize: '1.75rem', marginBottom: '0.5rem', color: 'var(--charcoal)' }}>Request a Quote</h3>
             <p className="text-secondary" style={{ marginBottom: '2rem' }}>Fill out the form below and we will get back to you promptly.</p>
             
-            <form>
+            <form onSubmit={handleContactSubmit}>
               <div className="grid-2" style={{ gap: '1rem' }}>
                 <div className="form-group">
                   <label>Full Name *</label>
-                  <input type="text" className="form-control" required />
+                  <input type="text" name="name" className="form-control" required />
                 </div>
                 <div className="form-group">
                   <label>Company Name</label>
-                  <input type="text" className="form-control" />
+                  <input type="text" name="company" className="form-control" />
                 </div>
               </div>
               <div className="grid-2" style={{ gap: '1rem' }}>
                 <div className="form-group">
                   <label>Phone Number *</label>
-                  <input type="tel" className="form-control" required />
+                  <input type="tel" name="phone" className="form-control" required />
                 </div>
                 <div className="form-group">
                   <label>Email Address *</label>
-                  <input type="email" className="form-control" required />
+                  <input type="email" name="email" className="form-control" required />
                 </div>
               </div>
               <div className="form-group">
                 <label>Service Required *</label>
-                <select className="form-control" required>
+                <select name="service" className="form-control" required>
                   <option value="">Select a service</option>
                   <option value="Demolition">Controlled Demolition</option>
                   <option value="Concrete Cutting">Concrete Cutting / Core Drilling</option>
@@ -64,14 +81,14 @@ const Contact = () => {
               </div>
               <div className="form-group">
                 <label>Project Location</label>
-                <input type="text" className="form-control" placeholder="e.g. Abu Dhabi, Dubai" />
+                <input type="text" name="location" className="form-control" placeholder="e.g. Abu Dhabi, Dubai" />
               </div>
               <div className="form-group">
                 <label>Message / Project Details *</label>
-                <textarea className="form-control" required></textarea>
+                <textarea name="message" className="form-control" required></textarea>
               </div>
               <button type="submit" className="btn btn-primary btn-block">
-                Submit Inquiry
+                Submit Inquiry via WhatsApp
               </button>
             </form>
           </div>

@@ -3,6 +3,23 @@ import HeroBanner from '../components/HeroBanner';
 import { Briefcase, UserCheck, HeartHandshake, FileText } from 'lucide-react';
 
 const Careers = () => {
+  const handleCareersSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    
+    const subject = `Job Application: ${data.position} - ${data.name}`;
+    const body = `Name: ${data.name}
+Phone: ${data.phone}
+Email: ${data.email || 'N/A'}
+Position: ${data.position}
+Experience: ${data.experience} years
+
+* IMPORTANT: Please attach your CV to this email before sending. *`;
+
+    window.location.href = `mailto:info@quadrilldemolition.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <div className="page-careers bg-light">
       <HeroBanner 
@@ -39,22 +56,22 @@ const Careers = () => {
           
           <div style={{ backgroundColor: 'var(--white)', padding: '2.5rem', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)' }}>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--charcoal)' }}>Submit Your CV</h3>
-            <form>
+            <form onSubmit={handleCareersSubmit}>
               <div className="form-group">
                 <label>Full Name *</label>
-                <input type="text" className="form-control" placeholder="Enter your full name" required />
+                <input type="text" name="name" className="form-control" placeholder="Enter your full name" required />
               </div>
               <div className="form-group">
                 <label>Phone Number *</label>
-                <input type="tel" className="form-control" placeholder="Enter your phone number" required />
+                <input type="tel" name="phone" className="form-control" placeholder="Enter your phone number" required />
               </div>
               <div className="form-group">
                 <label>Email Address</label>
-                <input type="email" className="form-control" placeholder="Enter your email" />
+                <input type="email" name="email" className="form-control" placeholder="Enter your email" />
               </div>
               <div className="form-group">
                 <label>Position Applied For *</label>
-                <select className="form-control" required>
+                <select name="position" className="form-control" required>
                   <option value="">Select a position</option>
                   <option value="Demolition Expert">Demolition Expert</option>
                   <option value="Concrete Cutter">Concrete Cutter</option>
@@ -66,11 +83,16 @@ const Careers = () => {
               </div>
               <div className="form-group">
                 <label>Years of Experience *</label>
-                <input type="number" className="form-control" placeholder="e.g. 5" required />
+                <input type="number" name="experience" className="form-control" placeholder="e.g. 5" required />
               </div>
-              <div className="form-group">
-                <label>Upload CV (PDF, DOCX) *</label>
-                <input type="file" className="form-control" required style={{ padding: '0.5rem' }} />
+              <div className="form-group" style={{ backgroundColor: 'var(--light-grey)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid #e5e7eb' }}>
+                <p style={{ fontSize: '0.9rem', color: 'var(--charcoal)', fontWeight: '500', marginBottom: '0.5rem' }}>
+                  <FileText size={16} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.25rem' }} /> 
+                  Important: CV Attachment
+                </p>
+                <p style={{ fontSize: '0.85rem', color: 'var(--concrete-grey)' }}>
+                  This application will open your email client. You must manually attach your CV to the email before sending.
+                </p>
               </div>
               <button type="submit" className="btn btn-primary btn-block" style={{ marginTop: '1rem' }}>
                 <FileText size={18} style={{ display: 'inline-block', marginRight: '0.5rem', verticalAlign: 'middle' }} /> 

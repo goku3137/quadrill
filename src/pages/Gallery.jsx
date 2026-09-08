@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import HeroBanner from '../components/HeroBanner';
 import { X } from 'lucide-react';
+import heroImg from '../assets/project-gallery-10.webp';
 
 const Gallery = () => {
   const [activeTab, setActiveTab] = useState('All');
@@ -8,10 +9,11 @@ const Gallery = () => {
 
   const categories = ['All', 'Demolition', 'Concrete Cutting', 'Underwater Cutting', 'Equipment', 'HSE'];
   
-  // Placeholder images mapped to categories
-  const images = Array.from({ length: 12 }).map((_, i) => ({
+  // Dynamically import all project gallery images using Vite's import.meta.glob
+  const imagesGlob = import.meta.glob('../assets/project-gallery-*.webp', { eager: true, import: 'default' });
+  const images = Object.values(imagesGlob).map((url, i) => ({
     id: i,
-    url: `https://images.unsplash.com/photo-${1500000000000 + i}?auto=format&fit=crop&w=800`,
+    url,
     category: categories[(i % 5) + 1]
   }));
 
@@ -24,7 +26,7 @@ const Gallery = () => {
       <HeroBanner 
         title="Project & Equipment Gallery"
         subtitle="Visual proof of our technical capability and execution."
-        imageSrc="https://images.unsplash.com/photo-1541888087405-eb813d04c40b?auto=format&fit=crop&q=80&w=1920"
+        imageSrc={heroImg}
       />
 
       <section className="section">
@@ -60,8 +62,8 @@ const Gallery = () => {
                 }}
                 className="hover-lift"
               >
-                <img src={img.url} alt={`Gallery ${img.category}`} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'var(--transition)' }} />
-                <div style={{ position: 'absolute', bottom: '0', left: '0', width: '100%', padding: '0.5rem', background: 'rgba(0,0,0,0.7)', color: 'white', fontSize: '0.8rem' }}>
+                <img src={img.url} alt={`Gallery ${img.category}`} className="pro-image" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'var(--transition)' }} />
+                <div style={{ position: 'absolute', bottom: '0', left: '0', width: '100%', padding: '0.5rem', background: 'rgba(0,0,0,0.7)', color: 'white', fontSize: '0.8rem', pointerEvents: 'none' }}>
                   {img.category}
                 </div>
               </div>
