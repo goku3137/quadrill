@@ -212,3 +212,18 @@ textarea.form-control {
   scroll-margin-top: 120px; /* approx header height (top-bar + nav) */
 }
 
+/* Professional Color Grading & Image Effects */
+/* Professional Image Effects */
+.pro-image {
+  /* Clean, natural look */
+  transition: all 0.4s ease;
+  border-radius: var(--radius-sm);
+}
+
+.pro-image:hover,
+.hover-lift:hover .pro-image {
+  /* Subtle lift and zoom on hover, no weird colors */
+  transform: scale(1.02);
+  box-shadow: var(--shadow-md);
+}
+

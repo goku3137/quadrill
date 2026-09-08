@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
 import HeroBanner from '../components/HeroBanner';
 import { CheckCircle } from 'lucide-react';
+import heroImg from '../assets/projects-hero-premium.webp';
+
+import proj1 from '../assets/concrete-pit-construction.webp';
+import proj2 from '../assets/wire-saw-cutting.webp';
+import proj3 from '../assets/floor-saw-cutting-2.webp';
+import proj4 from '../assets/core-drilling-close-up.webp';
+import proj5 from '../assets/hilti-wall-saw-vertical.webp';
+import proj6 from '../assets/chemical-anchoring-rebar.webp';
 
 const Projects = () => {
   const categories = ['All', 'Demolition', 'Concrete Cutting', 'Marine', 'Industrial', 'Infrastructure'];
   const [activeFilter, setActiveFilter] = useState('All');
 
   const projects = [
-    { title: "Industrial Facility Demolition", category: "Demolition", location: "Abu Dhabi, UAE", desc: "Complete structural dismantling of an old factory." },
-    { title: "Marine Concrete Cutting Project", category: "Marine", location: "Dubai, UAE", desc: "Underwater wire sawing of quay wall sections." },
-    { title: "Bridge Expansion Joint Cutting", category: "Infrastructure", location: "Sharjah, UAE", desc: "Precision floor sawing on a major highway bridge." },
-    { title: "Refinery Structural Modification", category: "Industrial", location: "Ruwais, UAE", desc: "Vibration-free core drilling in a live plant." },
-    { title: "High-Rise Core Wall Sawing", category: "Concrete Cutting", location: "Dubai, UAE", desc: "Creating large elevator shaft openings." },
-    { title: "Port Jetty Demolition", category: "Marine", location: "Fujairah, UAE", desc: "Hydro demolition and pile breaking." }
+    { title: "Industrial Facility Demolition", category: "Demolition", location: "Abu Dhabi, UAE", desc: "Complete structural dismantling of an old factory.", image: proj1 },
+    { title: "Marine Concrete Cutting Project", category: "Marine", location: "Dubai, UAE", desc: "Underwater wire sawing of quay wall sections.", image: proj2 },
+    { title: "Bridge Expansion Joint Cutting", category: "Infrastructure", location: "Sharjah, UAE", desc: "Precision floor sawing on a major highway bridge.", image: proj3 },
+    { title: "Refinery Structural Modification", category: "Industrial", location: "Ruwais, UAE", desc: "Vibration-free core drilling in a live plant.", image: proj4 },
+    { title: "High-Rise Core Wall Sawing", category: "Concrete Cutting", location: "Dubai, UAE", desc: "Creating large elevator shaft openings.", image: proj5 },
+    { title: "Port Jetty Demolition", category: "Marine", location: "Fujairah, UAE", desc: "Hydro demolition and pile breaking.", image: proj6 }
   ];
 
   const filteredProjects = activeFilter === 'All'
@@ -24,7 +32,7 @@ const Projects = () => {
       <HeroBanner 
         title="Our Projects"
         subtitle="Proven capability across industrial, commercial, and marine sectors."
-        imageSrc="https://images.unsplash.com/photo-1504307651254-35680f356f58?auto=format&fit=crop&q=80&w=1920"
+        imageSrc={heroImg}
       />
 
       <section className="section bg-light">
@@ -56,8 +64,8 @@ const Projects = () => {
             <div className="grid-3">
               {filteredProjects.map((proj, idx) => (
                 <div key={idx} style={{ backgroundColor: 'var(--white)', borderRadius: 'var(--radius-md)', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
-                  <div style={{ height: '200px', backgroundColor: 'var(--charcoal)' }}>
-                    <img src={`https://images.unsplash.com/photo-${1500000000000 + idx}?auto=format&fit=crop&w=400`} alt="Project placeholder" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
+                  <div style={{ height: '200px', backgroundColor: 'var(--charcoal)', overflow: 'hidden' }}>
+                    <img src={proj.image} alt={proj.title} className="pro-image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                   <div style={{ padding: '1.5rem' }}>
                     <div style={{ color: 'var(--safety-orange)', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '0.5rem', textTransform: 'uppercase' }}>

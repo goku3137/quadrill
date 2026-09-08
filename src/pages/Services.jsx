@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Hammer, Anchor, Settings, Zap, Droplets, HardHat } from 'lucide-react';
 import HeroBanner from '../components/HeroBanner';
 import ServiceCard from '../components/ServiceCard';
+import heroImg from '../assets/services-hero-premium.webp';
+import underwaterImg from '../assets/wire-saw-large-cylinder.webp';
 
 const Services = () => {
   const demolitionServices = [
@@ -109,7 +111,7 @@ const Services = () => {
       <HeroBanner 
         title="Our Services"
         subtitle="Engineered precision in every cut. Delivering advanced solutions across demolition, concrete cutting, and marine works."
-        imageSrc="https://images.unsplash.com/photo-1504307651254-35680f356f58?auto=format&fit=crop&q=80&w=1920"
+        imageSrc={heroImg}
       />
 
       {/* Underwater Cutting Highlight */}
@@ -128,10 +130,11 @@ const Services = () => {
             </p>
             <Link to="/contact" className="btn btn-primary">Request a Quote for Marine Works</Link>
           </div>
-          <div style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '4px solid rgba(255,255,255,0.1)' }}>
+          <div style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '4px solid rgba(255,255,255,0.1)' }} className="hover-lift">
             <img 
-              src="https://images.unsplash.com/photo-1616422285623-138d6df1b34c?auto=format&fit=crop&q=80&w=800" 
+              src={underwaterImg} 
               alt="Underwater Marine Operations" 
+              className="pro-image"
               style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '350px' }}
             />
           </div>
