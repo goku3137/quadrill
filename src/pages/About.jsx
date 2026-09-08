@@ -1,18 +1,17 @@
 import React from 'react';
-import { ShieldCheck, Target, Users } from 'lucide-react';
 import HeroBanner from '../components/HeroBanner';
+import { Target, Users, Shield, Lightbulb } from 'lucide-react';
+import heroImg from '../assets/home-intro-premium.webp';
+import { ShieldCheck } from 'lucide-react';
 
 const About = () => {
   return (
-    <div className="page-about">
+    <div className="page-about bg-light">
       <HeroBanner 
-        title="About Us"
-        subtitle="10+ Years of Professional Team Experience in High-Precision Demolition"
-        imageSrc="https://images.unsplash.com/photo-1541888087405-eb813d04c40b?auto=format&fit=crop&q=80&w=1920"
-        primaryCtaText="Our Services"
-        primaryCtaLink="/services"
-        secondaryCtaText="Contact Us"
-        secondaryCtaLink="/contact"
+        title="About Quadrill Demolition"
+        subtitle="More than a decade of expertise in precision demolition, concrete cutting, and marine operations."
+        imageSrc={heroImg}
+        showCtas={false}
       />
 
       <section className="section">

@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroBanner from '../components/HeroBanner';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import heroImg from '../assets/home-hero-premium.webp';
 
 const ContactInfoCard = ({ icon: Icon, title, content }) => (
   <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
@@ -37,7 +38,7 @@ const Contact = () => {
       <HeroBanner 
         title="Contact Us"
         subtitle="Reach out to our engineering team for project discussions or quotations."
-        imageSrc="https://images.unsplash.com/photo-1541888087405-eb813d04c40b?auto=format&fit=crop&q=80&w=1920"
+        imageSrc={heroImg}
         showCtas={false}
       />
 

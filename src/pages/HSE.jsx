@@ -59,7 +59,7 @@ const HSE = () => {
             <p>Our step-by-step approach to ensuring zero incidents.</p>
           </div>
           
-          <div className="grid-2">
+          <div className="grid-3">
             <div>
               <HseStep number="1" icon={AlertTriangle} title="Risk Assessment (RAMS)" desc="Every project begins with detailed risk assessments and method statements to identify hazards and control risks." />
               <HseStep number="2" icon={HardHat} title="Training & Competency" desc="All staff undergo continuous safety training. Our team has more than 10 years of global experience handling high-risk equipment." />
@@ -71,6 +71,12 @@ const HSE = () => {
               <HseStep number="6" icon={Recycle} title="Environmental Protection" desc="Minimizing impact through dust control, noise reduction, waste management, and eco-friendly practices." />
               <HseStep number="7" icon={ShieldCheck} title="Worksite Control" desc="Proper barricading, signposting, and controlled safety zones for cutting and demolition operations." />
               <HseStep number="8" icon={Waves} title="Marine Safety" desc="Specialized protocols for underwater cutting: diver safety, visibility control, and communication systems." />
+            </div>
+            <div>
+              <HseStep number="9" icon={Anchor} title="Lifting & Rigging" desc="Strict supervision and certified rigging practices for the safe removal and lifting of heavy concrete blocks." />
+              <HseStep number="10" icon={AlertTriangle} title="Hazardous Materials" desc="Safe identification, containment, and management of hazardous materials found during demolition works." />
+              <HseStep number="11" icon={ShieldCheck} title="Monitoring & Reporting" desc="Continuous site monitoring, daily safety briefings, and comprehensive reporting of all HSE metrics." />
+              <HseStep number="12" icon={HardHat} title="Working at Heights" desc="Mandatory fall protection, harness use, and edge protection protocols when working at heights or near open pits." />
             </div>
           </div>
         </div>
