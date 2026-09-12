@@ -1,91 +1,91 @@
-import React, { useState } from 'react';
-import HeroBanner from '../components/HeroBanner';
-import { CheckCircle } from 'lucide-react';
-import heroImg from '../assets/projects-hero-premium.webp';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
 
-import proj1 from '../assets/concrete-pit-construction.webp';
-import proj2 from '../assets/wire-saw-cutting.webp';
-import proj3 from '../assets/floor-saw-cutting-2.webp';
-import proj4 from '../assets/core-drilling-close-up.webp';
-import proj5 from '../assets/hilti-wall-saw-vertical.webp';
-import proj6 from '../assets/chemical-anchoring-rebar.webp';
+import projHeroImg from '../assets/projects-hero-premium.webp';
+import proj1Img from '../assets/project-gallery-12.webp';
+import proj2Img from '../assets/project-gallery-17.webp';
+import proj3Img from '../assets/project-gallery-22.webp';
+import proj4Img from '../assets/project-gallery-28.webp';
 
 const Projects = () => {
-  const categories = ['All', 'Demolition', 'Concrete Cutting', 'Marine', 'Industrial', 'Infrastructure'];
-  const [activeFilter, setActiveFilter] = useState('All');
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
 
   const projects = [
-    { title: "Industrial Facility Demolition", category: "Demolition", location: "Abu Dhabi, UAE", desc: "Complete structural dismantling of an old factory.", image: proj1 },
-    { title: "Marine Concrete Cutting Project", category: "Marine", location: "Dubai, UAE", desc: "Underwater wire sawing of quay wall sections.", image: proj2 },
-    { title: "Bridge Expansion Joint Cutting", category: "Infrastructure", location: "Sharjah, UAE", desc: "Precision floor sawing on a major highway bridge.", image: proj3 },
-    { title: "Refinery Structural Modification", category: "Industrial", location: "Ruwais, UAE", desc: "Vibration-free core drilling in a live plant.", image: proj4 },
-    { title: "High-Rise Core Wall Sawing", category: "Concrete Cutting", location: "Dubai, UAE", desc: "Creating large elevator shaft openings.", image: proj5 },
-    { title: "Port Jetty Demolition", category: "Marine", location: "Fujairah, UAE", desc: "Hydro demolition and pile breaking.", image: proj6 }
+    { title: "Dubai Marina Bridge Demolition", category: "Heavy Civil / Marine", img: proj1Img },
+    { title: "Abu Dhabi Industrial Refinery Decommissioning", category: "Oil & Gas", img: proj2Img },
+    { title: "Downtown Core Structural Modification", category: "Commercial", img: proj3Img },
+    { title: "Sharjah Port Underwater Cutting", category: "Marine Infrastructure", img: proj4Img }
   ];
 
-  const filteredProjects = activeFilter === 'All'
-    ? projects
-    : projects.filter(p => p.category === activeFilter);
-
   return (
-    <div className="page-projects">
-      <HeroBanner 
-        title="Our Projects"
-        subtitle="Proven capability across industrial, commercial, and marine sectors."
-        imageSrc={heroImg}
-      />
+    <div className="w-full bg-brand-dark overflow-hidden pt-24 pb-32">
+      {/* Hero Section */}
+      <section className="relative w-full h-[50vh] flex items-center justify-center overflow-hidden border-b border-white/10 mb-24">
+        <div className="absolute inset-0 z-0 bg-brand-dark/80" />
+        <div className="absolute inset-0 z-0 bg-cover bg-center opacity-40 mix-blend-screen grayscale" style={{ backgroundImage: `url(${projHeroImg})` }} />
+        <motion.div 
+          initial="hidden" animate="visible" variants={fadeInUp}
+          className="relative z-20 text-center px-6"
+        >
+          <h1 className="font-serif text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4 text-white drop-shadow-2xl">
+            Featured <span className="text-brand-red">Portfolio</span>
+          </h1>
+          <p className="font-sans text-xl text-gray-300 max-w-2xl mx-auto">
+            A showcase of engineering dominance and complex structural dismantlement.
+          </p>
+        </motion.div>
+      </section>
 
-      <section className="section bg-light">
-        <div className="container">
-          {/* Filter Buttons */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center', marginBottom: '3rem' }}>
-            {categories.map((cat, idx) => (
-              <button
-                key={idx}
-                className={`btn ${activeFilter === cat ? 'btn-primary' : ''}`}
-                onClick={() => setActiveFilter(cat)}
-                style={{
-                  backgroundColor: activeFilter !== cat ? 'var(--white)' : '',
-                  color: activeFilter !== cat ? 'var(--charcoal)' : '',
-                  border: activeFilter !== cat ? '1px solid #e5e7eb' : ''
-                }}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* Project Cards */}
-          {filteredProjects.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--concrete-grey)' }}>
-              No projects found in this category.
-            </div>
-          ) : (
-            <div className="grid-3">
-              {filteredProjects.map((proj, idx) => (
-                <div key={idx} style={{ backgroundColor: 'var(--white)', borderRadius: 'var(--radius-md)', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
-                  <div style={{ height: '200px', backgroundColor: 'var(--charcoal)', overflow: 'hidden' }}>
-                    <img src={proj.image} alt={proj.title} className="pro-image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  </div>
-                  <div style={{ padding: '1.5rem' }}>
-                    <div style={{ color: 'var(--safety-orange)', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
-                      {proj.category}
-                    </div>
-                    <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--charcoal)' }}>{proj.title}</h3>
-                    <div style={{ color: 'var(--concrete-grey)', fontSize: '0.85rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                      <CheckCircle size={14} className="text-primary" /> {proj.location}
-                    </div>
-                    <p style={{ color: 'var(--concrete-grey)', fontSize: '0.9rem' }}>{proj.desc}</p>
-                  </div>
+      {/* Projects Grid */}
+      <section className="px-6">
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12"
+        >
+          {projects.map((proj, index) => (
+            <motion.div 
+              key={index} 
+              variants={fadeInUp}
+              className="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer"
+            >
+              <img 
+                src={proj.img} 
+                alt={proj.title} 
+                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+              
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <p className="font-sans text-brand-red font-bold uppercase tracking-widest text-sm mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  {proj.category}
+                </p>
+                <h3 className="font-serif text-3xl font-black text-white uppercase transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                  {proj.title}
+                </h3>
+                
+                <div className="absolute top-8 right-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-500 delay-150">
+                  <ExternalLink className="text-white" size={20} />
                 </div>
-              ))}
-            </div>
-          )}
-        </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </section>
     </div>
   );
 };
 
 export default Projects;
-

@@ -36,9 +36,9 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="app-container" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <div className="flex flex-col min-h-screen bg-brand-dark text-white">
         <Header />
-        <main style={{ flex: '1' }}>
+        <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
