@@ -1,199 +1,213 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Anchor, Hammer, Factory, Building2, Truck, Settings } from 'lucide-react';
-import HeroBanner from '../components/HeroBanner';
-import ServiceCard from '../components/ServiceCard';
-import heroImg from '../assets/home-hero-premium.webp';
-import introImg from '../assets/home-intro-premium.webp';
+import { motion } from 'framer-motion';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Environment, Float, MeshDistortMaterial } from '@react-three/drei';
+import { Hammer, Factory, Anchor, Building2, HardHat, TriangleRight } from 'lucide-react';
+
+import commercialDemoImg from '../assets/concrete-beam-crane-lift.webp';
+import siteClearanceImg from '../assets/concrete-pit-construction.webp';
+import heavyConstImg from '../assets/wall-saw-cutting-concrete.webp';
+import marineImg from '../assets/core-drilling-close-up.webp';
+import implosionImg from '../assets/stitch-drilling-holes.webp';
+import wireSawingImg from '../assets/wire-saw-large-cylinder.webp';
+
+// 3D Animated Abstract Debris/Structure for the Hero
+const FloatingGeometry = () => {
+  const meshRef = useRef();
+
+  useFrame((state, delta) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += delta * 0.2;
+      meshRef.current.rotation.y += delta * 0.3;
+    }
+  });
+
+  return (
+    <Float speed={2} rotationIntensity={1} floatIntensity={2}>
+      <mesh ref={meshRef} scale={1.5}>
+        <icosahedronGeometry args={[1, 1]} />
+        <MeshDistortMaterial
+          color="#ff2a2a"
+          envMapIntensity={1}
+          clearcoat={1}
+          clearcoatRoughness={0.1}
+          metalness={0.9}
+          roughness={0.2}
+          distort={0.4}
+          speed={2}
+        />
+      </mesh>
+    </Float>
+  );
+};
 
 const Home = () => {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
+
+  const services = [
+    { icon: Hammer, title: "Commercial Demolition", desc: "Tactical dismantling of multi-story structures using heavy robotics.", img: commercialDemoImg },
+    { icon: Factory, title: "Site Clearance", desc: "Comprehensive debris removal and grading for large-scale developments.", img: siteClearanceImg },
+    { icon: Building2, title: "Heavy Construction", desc: "Structural modifications and heavy-duty concrete cutting.", img: heavyConstImg },
+    { icon: Anchor, title: "Marine Demolition", desc: "Specialized underwater cutting for offshore platforms.", img: marineImg },
+    { icon: HardHat, title: "Controlled Implosion", desc: "Engineered explosive demolition for rapid, safe collapse.", img: implosionImg },
+    { icon: TriangleRight, title: "Wire Sawing", desc: "Diamond wire technology for slicing infinite depths.", img: wireSawingImg }
+  ];
+
   return (
-    <div className="page-home">
-      {/* Hero Section */}
-      <HeroBanner 
-        title="Precision Demolition, Concrete Cutting & Underwater Cutting Specialists."
-        subtitle="Safe, precise, and technically advanced demolition and cutting services for complex structural, industrial, and marine environments."
-        imageSrc={heroImg}
-      />
-
-      {/* Divider stripe */}
-      <div style={{ height: '6px', background: 'linear-gradient(90deg, var(--safety-yellow), var(--safety-orange))' }} />
-
-      {/* Intro Section */}
-      <section className="section bg-light">
-        <div className="container grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
-          <div className="intro-content">
-            <p className="text-accent" style={{ fontWeight: '700', fontSize: '0.9rem', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '1rem' }}>
-              UAE-Based Specialists
-            </p>
-            <h2 className="text-primary" style={{ marginBottom: '1.5rem', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', lineHeight: '1.2' }}>
-              10+ Years of Professional Team Experience
-            </h2>
-            <p className="text-secondary" style={{ marginBottom: '2rem', fontSize: '1.05rem', lineHeight: '1.8' }}>
-              Quadrill Demolition LLC delivers safe, precise, and technically advanced demolition, concrete cutting, and underwater cutting services across the UAE and international markets — from complex structural removal to specialized marine cutting operations.
-            </p>
-            <ul style={{ marginBottom: '2.5rem', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontWeight: '500' }}>
-                <ShieldCheck size={20} className="text-accent" /> Strict compliance to international standards
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontWeight: '500' }}>
-                <ShieldCheck size={20} className="text-accent" /> Trusted partner for marine infrastructure
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontWeight: '500' }}>
-                <ShieldCheck size={20} className="text-accent" /> Uncompromising safety standards
-              </li>
-            </ul>
-            <Link to="/about" className="btn btn-secondary">Learn More About Us</Link>
-          </div>
-          <div className="intro-image" style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
-            <img 
-              src={introImg} 
-              alt="Professional Demolition and Construction site" 
-              className="pro-image"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '420px' }}
-            />
-          </div>
+    <div className="w-full bg-brand-dark overflow-hidden">
+      
+      {/* 3D Hero Section */}
+      <section className="relative w-full h-screen flex items-center justify-center pt-20">
+        <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen">
+          <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[10, 10, 5]} intensity={1.5} />
+            <Environment preset="city" />
+            <FloatingGeometry />
+          </Canvas>
         </div>
-      </section>
+        
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/20 via-brand-dark/60 to-brand-dark z-10" />
 
-
-      {/* Services Preview Section */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <h2>Our Core Services</h2>
-            <p>Advanced solutions for industrial, commercial, marine, and oil & gas projects.</p>
-          </div>
+        <motion.div 
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+          className="relative z-20 text-center max-w-5xl mx-auto px-6"
+        >
+          <motion.h1 
+            variants={fadeInUp}
+            className="font-serif text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-tight uppercase"
+          >
+            ENGINEERED FOR <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-red-800 drop-shadow-[0_0_15px_rgba(255,42,42,0.5)]">
+              DESTRUCTION
+            </span>
+          </motion.h1>
           
-          <div className="grid-3">
-            <ServiceCard 
-              icon={Hammer}
-              title="Controlled Demolition"
-              description="Safe and precise dismantling of structures using engineered methods. Low-impact and vibration-controlled."
-            />
-            <ServiceCard 
-              icon={Settings}
-              title="Concrete Cutting"
-              description="High-precision concrete cutting using advanced machinery for structural modifications and heavy-duty removal."
-            />
-            <ServiceCard 
-              icon={Settings}
-              title="Wire Sawing"
-              description="Specialized cutting for large, thick, or heavily reinforced concrete and steel structures."
-            />
-            <ServiceCard 
-              icon={Settings}
-              title="Core Drilling"
-              description="Precise circular openings in concrete and asphalt for MEP installations and utility penetrations."
-            />
-            <ServiceCard 
-              icon={Anchor}
-              title="Underwater Cutting"
-              description="Advanced underwater concrete cutting for marine and offshore structures like quay walls and jetties."
-            />
-            <ServiceCard 
-              icon={Settings}
-              title="Hydro Demolition"
-              description="High-pressure water jetting for precise and non-vibratory removal of damaged or deteriorated concrete."
-            />
-          </div>
+          <motion.p 
+            variants={fadeInUp}
+            className="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto font-light leading-relaxed font-sans"
+          >
+            Precision demolition, concrete cutting, and structural dismantling for complex industrial and marine environments. Experience the ultimate in destructive power and precision.
+          </motion.p>
           
-          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <Link to="/services" className="btn btn-primary">View All Services</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="section bg-dark text-white">
-        <div className="container">
-          <div className="section-header">
-            <h2 style={{ color: 'var(--white)' }}>Why Choose Quadrill</h2>
-            <p style={{ color: 'var(--light-grey)' }}>We deliver safe, efficient, and technically advanced solutions.</p>
-          </div>
-          
-          <div className="grid-4" style={{ textAlign: 'center' }}>
-            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: 'var(--radius-md)' }}>
-              <ShieldCheck size={48} className="text-accent" style={{ margin: '0 auto 1rem' }} />
-              <h3 style={{ marginBottom: '1rem', fontSize: '1.2rem', color: 'var(--white)' }}>Safety Compliance</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--light-grey)' }}>Zero-incident mindset with international HSE standards.</p>
-            </div>
-            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: 'var(--radius-md)' }}>
-              <Truck size={48} className="text-accent" style={{ margin: '0 auto 1rem' }} />
-              <h3 style={{ marginBottom: '1rem', fontSize: '1.2rem', color: 'var(--white)' }}>Advanced Equipment</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--light-grey)' }}>State-of-the-art machinery including robotics and diamond wire saws.</p>
-            </div>
-            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: 'var(--radius-md)' }}>
-              <Anchor size={48} className="text-accent" style={{ margin: '0 auto 1rem' }} />
-              <h3 style={{ marginBottom: '1rem', fontSize: '1.2rem', color: 'var(--white)' }}>Underwater Expertise</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--light-grey)' }}>Specialist capability for complex marine and offshore cutting.</p>
-            </div>
-            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: 'var(--radius-md)' }}>
-              <Building2 size={48} className="text-accent" style={{ margin: '0 auto 1rem' }} />
-              <h3 style={{ marginBottom: '1rem', fontSize: '1.2rem', color: 'var(--white)' }}>Experienced Team</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--light-grey)' }}>Over a decade of global project execution and technical knowledge.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Preview */}
-      <section className="section bg-light">
-        <div className="container">
-          <div className="section-header">
-            <h2>Industries We Serve</h2>
-            <p>Providing specialized solutions across multiple sectors.</p>
-          </div>
-          
-          <div className="grid-4" style={{ gap: '1rem' }}>
-            {[
-              { icon: Building2, name: 'Construction' },
-              { icon: Anchor, name: 'Marine & Ports' },
-              { icon: Factory, name: 'Oil & Gas' },
-              { icon: Factory, name: 'Industrial Plants' },
-              { icon: Building2, name: 'Infrastructure' },
-              { icon: Truck, name: 'Roads & Highways' },
-              { icon: Building2, name: 'Airports' },
-              { icon: Building2, name: 'Government' },
-            ].map((industry, index) => {
-              const Icon = industry.icon;
-              return (
-                <div key={index} style={{ 
-                  display: 'flex', alignItems: 'center', gap: '1rem', 
-                  backgroundColor: 'var(--white)', padding: '1.5rem', 
-                  borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)',
-                  fontWeight: '600'
-                }}>
-                  <Icon className="text-primary" />
-                  {industry.name}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="section" style={{ 
-        background: 'linear-gradient(135deg, var(--safety-yellow) 0%, var(--safety-orange) 100%)',
-        textAlign: 'center', color: 'var(--charcoal)'
-      }}>
-        <div className="container" style={{ maxWidth: '800px' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: 'var(--charcoal)' }}>
-            Need a safe and reliable demolition partner?
-          </h2>
-          <p style={{ fontSize: '1.2rem', marginBottom: '2rem', fontWeight: '500' }}>
-            Contact our engineering team today to discuss your project requirements.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn" style={{ backgroundColor: 'var(--charcoal)', color: 'var(--white)' }}>
-              Request a Quote
+          <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 justify-center items-center font-sans">
+            <Link 
+              to="/contact" 
+              className="px-8 py-4 bg-brand-red text-white font-bold tracking-widest uppercase rounded shadow-[0_0_20px_rgba(255,42,42,0.4)] hover:shadow-[0_0_30px_rgba(255,42,42,0.7)] hover:bg-red-500 hover:-translate-y-1 transition-all duration-300"
+            >
+              Initiate Project
             </Link>
-            <a href="tel:+971502340364" className="btn" style={{ backgroundColor: 'transparent', border: '2px solid var(--charcoal)' }}>
-              Call +971 50 234 0364
-            </a>
+            <Link 
+              to="/services" 
+              className="px-8 py-4 bg-transparent border border-white/20 text-white font-bold tracking-widest uppercase rounded hover:bg-white/10 transition-all duration-300"
+            >
+              Explore Capabilities
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Services Section */}
+      <section className="relative w-full py-32 px-6 bg-brand-dark">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          className="max-w-7xl mx-auto text-center mb-20"
+        >
+          <h2 className="font-serif text-4xl md:text-6xl font-black tracking-tight mb-4 uppercase">OUR CAPABILITIES</h2>
+          <p className="font-sans text-gray-400 text-lg max-w-2xl mx-auto">Advanced solutions engineered for extreme precision and zero compromises.</p>
+        </motion.div>
+        
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={staggerContainer}
+          className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {services.map((service, index) => (
+            <motion.div 
+              key={index} 
+              variants={fadeInUp}
+              className="group relative bg-brand-card backdrop-blur-xl border border-white/5 rounded-2xl overflow-hidden hover:border-brand-red/50 transition-colors duration-500 flex flex-col h-full"
+            >
+              {/* Image Header for Card */}
+              <div className="relative h-48 w-full overflow-hidden">
+                <div className="absolute inset-0 bg-brand-dark/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                <img 
+                  src={service.img} 
+                  alt={service.title} 
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute top-4 left-4 z-20 w-12 h-12 bg-black/60 backdrop-blur-md rounded-xl flex items-center justify-center text-brand-red group-hover:bg-brand-red group-hover:text-white group-hover:shadow-[0_0_20px_rgba(255,42,42,0.5)] transition-all duration-500">
+                  <service.icon size={24} />
+                </div>
+              </div>
+
+              <div className="p-8 flex flex-col flex-grow relative z-20">
+                <h3 className="font-serif text-2xl font-bold mb-4 uppercase">{service.title}</h3>
+                <p className="font-sans text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">{service.desc}</p>
+              </div>
+              
+              {/* Hover Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-red/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* Trust / Stats Section */}
+      <section className="relative w-full py-32 border-t border-b border-white/10 bg-black/30">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center mb-24 font-sans"
+        >
+          {[
+            { value: "500+", label: "Projects Completed" },
+            { value: "Zero", label: "Safety Incidents" },
+            { value: "10+", label: "Years Experience" },
+            { value: "24/7", label: "Readiness" }
+          ].map((stat, idx) => (
+            <motion.div key={idx} variants={fadeInUp}>
+              <h3 className="font-serif text-5xl md:text-7xl font-black text-white mb-2 tracking-tighter">{stat.value}</h3>
+              <p className="text-brand-red font-bold tracking-widest uppercase text-sm md:text-base">{stat.label}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="max-w-4xl mx-auto px-6 text-center"
+        >
+          <div className="bg-brand-card backdrop-blur-xl border border-white/5 rounded-3xl p-10 md:p-16 hover:border-brand-red/30 transition-colors duration-500">
+            <p className="font-serif text-2xl md:text-4xl font-light italic leading-relaxed text-gray-300 mb-8">
+              "Quadrill's approach to complex demolition is unmatched. Their precision cutting and rigorous safety standards kept our urban project ahead of schedule and risk-free."
+            </p>
+            <p className="font-sans text-brand-red font-bold tracking-wider">— Director of Infrastructure, UAE</p>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
