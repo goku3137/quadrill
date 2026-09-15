@@ -9,8 +9,8 @@ export default {
       colors: {
         'brand-dark': '#070709',
         'brand-card': 'rgba(25, 25, 30, 0.6)',
-        'brand-red': '#ff2a2a',
-        'brand-red-glow': 'rgba(255, 42, 42, 0.4)',
+        'brand-blue': '#1B81E5',
+        'brand-blue-glow': 'rgba(27, 129, 229, 0.4)',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

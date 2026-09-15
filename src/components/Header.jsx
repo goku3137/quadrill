@@ -30,7 +30,7 @@ const Header = () => {
               <Mail size={14} /> <span>info@quadrilldemolition.com</span>
             </div>
           </div>
-          <div className="text-brand-red font-bold tracking-wider">
+          <div className="text-brand-blue font-bold tracking-wider">
             10+ YEARS TEAM EXPERIENCE | UAE BASED
           </div>
         </div>
@@ -38,9 +38,12 @@ const Header = () => {
 
       {/* Main Nav */}
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link to="/" onClick={closeMenu} className="text-2xl font-black tracking-widest flex gap-2 items-center">
-          <span className="text-white">QUADRILL</span>
-          <span className="text-brand-red">DEMOLITION</span>
+        <Link to="/" onClick={closeMenu} className="flex gap-2 items-center">
+          <img src="/logo.svg" alt="Quadrill Demolition Logo" className="h-10 md:h-12 w-auto" />
+          <div className="flex flex-col justify-center leading-none">
+            <span className="text-xl font-black tracking-widest text-white">QUADRILL</span>
+            <span className="text-[10px] font-bold tracking-[0.2em] text-brand-blue">DEMOLITION</span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -61,7 +64,7 @@ const Header = () => {
           </ul>
           <Link
             to="/contact"
-            className="px-6 py-3 bg-brand-red text-white text-sm font-bold tracking-widest uppercase rounded shadow-[0_0_15px_rgba(255,42,42,0.4)] hover:shadow-[0_0_25px_rgba(255,42,42,0.6)] hover:bg-red-500 transition-all duration-300 transform hover:-translate-y-0.5"
+            className="px-6 py-3 bg-brand-blue text-white text-sm font-bold tracking-widest uppercase rounded shadow-[0_0_15px_rgba(27,129,229,0.4)] hover:shadow-[0_0_25px_rgba(27,129,229,0.6)] hover:bg-blue-500 transition-all duration-300 transform hover:-translate-y-0.5"
           >
             Request Quote
           </Link>
@@ -95,7 +98,7 @@ const Header = () => {
           <Link
             to="/contact"
             onClick={closeMenu}
-            className="mt-4 px-6 py-4 text-center bg-brand-red text-white font-bold tracking-widest uppercase rounded shadow-[0_0_15px_rgba(255,42,42,0.4)]"
+            className="mt-4 px-6 py-4 text-center bg-brand-blue text-white font-bold tracking-widest uppercase rounded shadow-[0_0_15px_rgba(27,129,229,0.4)]"
           >
             Request Quote
           </Link>

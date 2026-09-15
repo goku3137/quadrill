@@ -49,7 +49,7 @@ const Services = () => {
           className="relative z-20 text-center px-6"
         >
           <h1 className="font-serif text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4 text-white drop-shadow-2xl">
-            Our <span className="text-brand-red">Capabilities</span>
+            Our <span className="text-brand-blue">Capabilities</span>
           </h1>
           <p className="font-sans text-xl text-gray-300 max-w-2xl mx-auto">
             Engineered solutions for the most complex demolition and structural modification challenges.
@@ -68,7 +68,7 @@ const Services = () => {
             <motion.div 
               key={index} 
               variants={fadeInUp}
-              className="group relative bg-brand-card backdrop-blur-xl border border-white/5 rounded-2xl overflow-hidden hover:border-brand-red/50 transition-colors duration-500 flex flex-col sm:flex-row h-full"
+              className="group relative bg-brand-card backdrop-blur-xl border border-white/5 rounded-2xl overflow-hidden hover:border-brand-blue/50 transition-colors duration-500 flex flex-col sm:flex-row h-full"
             >
               {/* Image Section */}
               <div className="relative sm:w-2/5 h-64 sm:h-auto overflow-hidden">
@@ -82,7 +82,7 @@ const Services = () => {
 
               {/* Content Section */}
               <div className="p-8 sm:w-3/5 flex flex-col relative z-20">
-                <div className="w-12 h-12 bg-brand-red/10 rounded-xl flex items-center justify-center text-brand-red mb-6 group-hover:bg-brand-red group-hover:text-white transition-all duration-500">
+                <div className="w-12 h-12 bg-brand-blue/10 rounded-xl flex items-center justify-center text-brand-blue mb-6 group-hover:bg-brand-blue group-hover:text-white transition-all duration-500">
                   <service.icon size={24} />
                 </div>
                 <h3 className="font-serif text-2xl font-bold mb-4 uppercase">{service.title}</h3>

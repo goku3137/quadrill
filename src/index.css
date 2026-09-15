@@ -4,8 +4,8 @@
 @theme {
   --color-brand-dark: #070709;
   --color-brand-card: rgba(25, 25, 30, 0.6);
-  --color-brand-red: #ff2a2a;
-  --color-brand-red-glow: rgba(255, 42, 42, 0.4);
+  --color-brand-blue: #1B81E5;
+  --color-brand-blue-glow: rgba(27, 129, 229, 0.4);
   --font-sans: "Outfit", sans-serif;
   --font-serif: "Cinzel", serif;
 }

@@ -31,7 +31,7 @@ const About = () => {
           className="relative z-20 text-center px-6"
         >
           <h1 className="font-serif text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4 text-white drop-shadow-2xl">
-            Who <span className="text-brand-red">We Are</span>
+            Who <span className="text-brand-blue">We Are</span>
           </h1>
           <p className="font-sans text-xl text-gray-300 max-w-2xl mx-auto">
             A decade of relentless precision, engineering excellence, and structural dominance in the UAE.
@@ -43,7 +43,7 @@ const About = () => {
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeInUp}>
-            <h2 className="font-serif text-3xl md:text-5xl font-black mb-8 uppercase">The Quadrill <span className="text-brand-red">Standard</span></h2>
+            <h2 className="font-serif text-3xl md:text-5xl font-black mb-8 uppercase">The Quadrill <span className="text-brand-blue">Standard</span></h2>
             <div className="space-y-6 font-sans text-gray-400 text-lg leading-relaxed">
               <p>
                 Established with a vision to redefine the demolition and concrete cutting landscape, Quadrill Demolition LLC is built on an uncompromising foundation of safety, precision, and technological superiority.
@@ -53,18 +53,18 @@ const About = () => {
               </p>
             </div>
             <div className="mt-12 grid grid-cols-2 gap-8">
-              <div className="border-l-2 border-brand-red pl-6">
+              <div className="border-l-2 border-brand-blue pl-6">
                 <h4 className="font-serif text-3xl font-black text-white mb-2">10+</h4>
-                <p className="font-sans text-brand-red font-bold text-sm uppercase tracking-widest">Years Experience</p>
+                <p className="font-sans text-brand-blue font-bold text-sm uppercase tracking-widest">Years Experience</p>
               </div>
-              <div className="border-l-2 border-brand-red pl-6">
+              <div className="border-l-2 border-brand-blue pl-6">
                 <h4 className="font-serif text-3xl font-black text-white mb-2">100%</h4>
-                <p className="font-sans text-brand-red font-bold text-sm uppercase tracking-widest">Safety Compliance</p>
+                <p className="font-sans text-brand-blue font-bold text-sm uppercase tracking-widest">Safety Compliance</p>
               </div>
             </div>
           </motion.div>
           
-          <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeInUp} className="relative h-[600px] rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(255,42,42,0.1)]">
+          <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeInUp} className="relative h-[600px] rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(27,129,229,0.1)]">
             <img src={teamImg} alt="Engineering Team" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-80" />
           </motion.div>
@@ -75,7 +75,7 @@ const About = () => {
       <section className="py-32 bg-black border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="font-serif text-4xl md:text-5xl font-black uppercase">Our Core <span className="text-brand-red">Pillars</span></h2>
+            <h2 className="font-serif text-4xl md:text-5xl font-black uppercase">Our Core <span className="text-brand-blue">Pillars</span></h2>
           </div>
           
           <motion.div 
@@ -88,8 +88,8 @@ const About = () => {
               { icon: Eye, title: "Visionary", desc: "Constantly adopting the latest global demolition technologies and robotics." },
               { icon: Users, title: "Expertise", desc: "A highly trained, veteran team capable of solving complex engineering challenges." }
             ].map((val, idx) => (
-              <motion.div key={idx} variants={fadeInUp} className="bg-brand-dark border border-white/5 p-8 rounded-2xl hover:border-brand-red/40 transition-colors">
-                <val.icon className="text-brand-red mb-6" size={40} />
+              <motion.div key={idx} variants={fadeInUp} className="bg-brand-dark border border-white/5 p-8 rounded-2xl hover:border-brand-blue/40 transition-colors">
+                <val.icon className="text-brand-blue mb-6" size={40} />
                 <h3 className="font-serif text-xl font-bold mb-4 uppercase">{val.title}</h3>
                 <p className="font-sans text-gray-400">{val.desc}</p>
               </motion.div>
