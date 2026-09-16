@@ -5,12 +5,12 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float, MeshDistortMaterial } from '@react-three/drei';
 import { Hammer, Factory, Anchor, Building2, HardHat, TriangleRight } from 'lucide-react';
 
-import commercialDemoImg from '../assets/concrete-beam-crane-lift.webp';
-import siteClearanceImg from '../assets/concrete-pit-construction.webp';
-import heavyConstImg from '../assets/wall-saw-cutting-concrete.webp';
-import marineImg from '../assets/core-drilling-close-up.webp';
-import implosionImg from '../assets/stitch-drilling-holes.webp';
-import wireSawingImg from '../assets/wire-saw-large-cylinder.webp';
+import commercialDemoImg from '../assets/srv-commercial-demo.jpg';
+import siteClearanceImg from '../assets/srv-site-clearance.jpg';
+import heavyConstImg from '../assets/srv-heavy-cutting.jpg';
+import marineImg from '../assets/srv-marine-cutting.jpg';
+import implosionImg from '../assets/srv-implosion.jpg';
+import wireSawingImg from '../assets/srv-wire-sawing.jpg';
 
 // 3D Animated Abstract Debris/Structure for the Hero
 const FloatingGeometry = () => {

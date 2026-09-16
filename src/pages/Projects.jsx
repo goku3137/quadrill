@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 
 import projHeroImg from '../assets/projects-hero-premium.webp';
-import proj1Img from '../assets/project-gallery-12.webp';
-import proj2Img from '../assets/project-gallery-17.webp';
-import proj3Img from '../assets/project-gallery-22.webp';
-import proj4Img from '../assets/project-gallery-28.webp';
+import proj1Img from '../assets/proj-bridge-demo.jpg';
+import proj2Img from '../assets/proj-refinery-demo.jpg';
+import proj3Img from '../assets/proj-downtown-mod.jpg';
+import proj4Img from '../assets/proj-underwater-cut.jpg';
 
 const Projects = () => {
   const fadeInUp = {

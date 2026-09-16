@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { Hammer, Factory, Anchor, Building2, HardHat, TriangleRight, Droplets, Zap } from 'lucide-react';
 
-import commercialDemoImg from '../assets/concrete-beam-crane-lift.webp';
-import siteClearanceImg from '../assets/concrete-pit-construction.webp';
-import heavyConstImg from '../assets/wall-saw-cutting-concrete.webp';
-import marineImg from '../assets/core-drilling-close-up.webp';
-import implosionImg from '../assets/stitch-drilling-holes.webp';
-import wireSawingImg from '../assets/wire-saw-large-cylinder.webp';
-import hydroImg from '../assets/floor-saw-cutting-2.webp';
-import coreImg from '../assets/core-drilling-worker.webp';
+import commercialDemoImg from '../assets/srv-commercial-demo.jpg';
+import siteClearanceImg from '../assets/srv-site-clearance.jpg';
+import heavyConstImg from '../assets/srv-heavy-cutting.jpg';
+import marineImg from '../assets/srv-marine-cutting.jpg';
+import implosionImg from '../assets/srv-implosion.jpg';
+import wireSawingImg from '../assets/srv-wire-sawing.jpg';
+import hydroImg from '../assets/srv-hydro-demo.jpg';
+import coreImg from '../assets/core-drilling-close-up.webp';
 
 import servicesHeroImg from '../assets/services-hero-premium.webp';
 
 const Services = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -67,6 +82,7 @@ const Services = () => {
           {allServices.map((service, index) => (
             <motion.div 
               key={index} 
+              id={service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}
               variants={fadeInUp}
               className="group relative bg-brand-card backdrop-blur-xl border border-white/5 rounded-2xl overflow-hidden hover:border-brand-blue/50 transition-colors duration-500 flex flex-col sm:flex-row h-full"
             >

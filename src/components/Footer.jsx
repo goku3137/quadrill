@@ -37,10 +37,10 @@ const Footer = () => {
         <div>
           <h4 className="font-serif text-xl font-bold mb-6 uppercase tracking-wider">Specialties</h4>
           <ul className="flex flex-col gap-4 font-sans text-gray-400">
-            <li><Link to="/services" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Commercial Demolition</Link></li>
-            <li><Link to="/services" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Wire & Wall Sawing</Link></li>
-            <li><Link to="/services" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Core Drilling</Link></li>
-            <li><Link to="/services" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Marine Cutting</Link></li>
+            <li><Link to="/services#commercial-demolition" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Commercial Demolition</Link></li>
+            <li><Link to="/services#diamond-wire-sawing" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Wire & Wall Sawing</Link></li>
+            <li><Link to="/services#precision-core-drilling" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Core Drilling</Link></li>
+            <li><Link to="/services#marine-underwater-cutting" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Marine Cutting</Link></li>
           </ul>
         </div>
 
