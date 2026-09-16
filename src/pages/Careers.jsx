@@ -1,7 +1,7 @@
 import React from 'react';
 import HeroBanner from '../components/HeroBanner';
 import { Briefcase, UserCheck, HeartHandshake, FileText } from 'lucide-react';
-import heroImg from '../assets/hse-ppe-premium.webp';
+import heroImg from '../assets/hse-ppe-new.jpg';
 
 const Careers = () => {
   const handleCareersSubmit = (e) => {

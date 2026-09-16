@@ -5,12 +5,12 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float, MeshDistortMaterial } from '@react-three/drei';
 import { Hammer, Factory, Anchor, Building2, HardHat, TriangleRight } from 'lucide-react';
 
-import commercialDemoImg from '../assets/concrete-beam-crane-lift.webp';
-import siteClearanceImg from '../assets/concrete-pit-construction.webp';
-import heavyConstImg from '../assets/wall-saw-cutting-concrete.webp';
-import marineImg from '../assets/core-drilling-close-up.webp';
-import implosionImg from '../assets/stitch-drilling-holes.webp';
-import wireSawingImg from '../assets/wire-saw-large-cylinder.webp';
+import commercialDemoImg from '../assets/srv-commercial-demo.jpg';
+import siteClearanceImg from '../assets/srv-site-clearance.jpg';
+import heavyConstImg from '../assets/srv-heavy-cutting.jpg';
+import marineImg from '../assets/srv-marine-cutting.jpg';
+import implosionImg from '../assets/srv-implosion.jpg';
+import wireSawingImg from '../assets/srv-wire-sawing.jpg';
 
 // 3D Animated Abstract Debris/Structure for the Hero
 const FloatingGeometry = () => {
@@ -92,7 +92,7 @@ const Home = () => {
             className="font-serif text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-tight uppercase"
           >
             ENGINEERED FOR <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-red-800 drop-shadow-[0_0_15px_rgba(255,42,42,0.5)]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-blue-800 drop-shadow-[0_0_15px_rgba(27,129,229,0.5)]">
               DESTRUCTION
             </span>
           </motion.h1>
@@ -107,7 +107,7 @@ const Home = () => {
           <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 justify-center items-center font-sans">
             <Link 
               to="/contact" 
-              className="px-8 py-4 bg-brand-red text-white font-bold tracking-widest uppercase rounded shadow-[0_0_20px_rgba(255,42,42,0.4)] hover:shadow-[0_0_30px_rgba(255,42,42,0.7)] hover:bg-red-500 hover:-translate-y-1 transition-all duration-300"
+              className="px-8 py-4 bg-brand-blue text-white font-bold tracking-widest uppercase rounded shadow-[0_0_20px_rgba(27,129,229,0.4)] hover:shadow-[0_0_30px_rgba(27,129,229,0.7)] hover:bg-blue-500 hover:-translate-y-1 transition-all duration-300"
             >
               Initiate Project
             </Link>
@@ -145,7 +145,7 @@ const Home = () => {
             <motion.div 
               key={index} 
               variants={fadeInUp}
-              className="group relative bg-brand-card backdrop-blur-xl border border-white/5 rounded-2xl overflow-hidden hover:border-brand-red/50 transition-colors duration-500 flex flex-col h-full"
+              className="group relative bg-brand-card backdrop-blur-xl border border-white/5 rounded-2xl overflow-hidden hover:border-brand-blue/50 transition-colors duration-500 flex flex-col h-full"
             >
               {/* Image Header for Card */}
               <div className="relative h-48 w-full overflow-hidden">
@@ -155,7 +155,7 @@ const Home = () => {
                   alt={service.title} 
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute top-4 left-4 z-20 w-12 h-12 bg-black/60 backdrop-blur-md rounded-xl flex items-center justify-center text-brand-red group-hover:bg-brand-red group-hover:text-white group-hover:shadow-[0_0_20px_rgba(255,42,42,0.5)] transition-all duration-500">
+                <div className="absolute top-4 left-4 z-20 w-12 h-12 bg-black/60 backdrop-blur-md rounded-xl flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-white group-hover:shadow-[0_0_20px_rgba(27,129,229,0.5)] transition-all duration-500">
                   <service.icon size={24} />
                 </div>
               </div>
@@ -166,7 +166,7 @@ const Home = () => {
               </div>
               
               {/* Hover Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-red/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
           ))}
         </motion.div>
@@ -189,7 +189,7 @@ const Home = () => {
           ].map((stat, idx) => (
             <motion.div key={idx} variants={fadeInUp}>
               <h3 className="font-serif text-5xl md:text-7xl font-black text-white mb-2 tracking-tighter">{stat.value}</h3>
-              <p className="text-brand-red font-bold tracking-widest uppercase text-sm md:text-base">{stat.label}</p>
+              <p className="text-brand-blue font-bold tracking-widest uppercase text-sm md:text-base">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -201,11 +201,11 @@ const Home = () => {
           variants={fadeInUp}
           className="max-w-4xl mx-auto px-6 text-center"
         >
-          <div className="bg-brand-card backdrop-blur-xl border border-white/5 rounded-3xl p-10 md:p-16 hover:border-brand-red/30 transition-colors duration-500">
+          <div className="bg-brand-card backdrop-blur-xl border border-white/5 rounded-3xl p-10 md:p-16 hover:border-brand-blue/30 transition-colors duration-500">
             <p className="font-serif text-2xl md:text-4xl font-light italic leading-relaxed text-gray-300 mb-8">
               "Quadrill's approach to complex demolition is unmatched. Their precision cutting and rigorous safety standards kept our urban project ahead of schedule and risk-free."
             </p>
-            <p className="font-sans text-brand-red font-bold tracking-wider">— Director of Infrastructure, UAE</p>
+            <p className="font-sans text-brand-blue font-bold tracking-wider">— Director of Infrastructure, UAE</p>
           </div>
         </motion.div>
       </section>

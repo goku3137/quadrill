@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 
 import projHeroImg from '../assets/projects-hero-premium.webp';
-import proj1Img from '../assets/project-gallery-12.webp';
-import proj2Img from '../assets/project-gallery-17.webp';
-import proj3Img from '../assets/project-gallery-22.webp';
-import proj4Img from '../assets/project-gallery-28.webp';
+import proj1Img from '../assets/proj-bridge-demo.jpg';
+import proj2Img from '../assets/proj-refinery-demo.jpg';
+import proj3Img from '../assets/proj-downtown-mod.jpg';
+import proj4Img from '../assets/proj-underwater-cut.jpg';
 
 const Projects = () => {
   const fadeInUp = {
@@ -40,7 +40,7 @@ const Projects = () => {
           className="relative z-20 text-center px-6"
         >
           <h1 className="font-serif text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4 text-white drop-shadow-2xl">
-            Featured <span className="text-brand-red">Portfolio</span>
+            Featured <span className="text-brand-blue">Portfolio</span>
           </h1>
           <p className="font-sans text-xl text-gray-300 max-w-2xl mx-auto">
             A showcase of engineering dominance and complex structural dismantlement.
@@ -69,7 +69,7 @@ const Projects = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
               
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <p className="font-sans text-brand-red font-bold uppercase tracking-widest text-sm mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <p className="font-sans text-brand-blue font-bold uppercase tracking-widest text-sm mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   {proj.category}
                 </p>
                 <h3 className="font-serif text-3xl font-black text-white uppercase transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">

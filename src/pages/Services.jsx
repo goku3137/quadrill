@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { Hammer, Factory, Anchor, Building2, HardHat, TriangleRight, Droplets, Zap } from 'lucide-react';
 
-import commercialDemoImg from '../assets/concrete-beam-crane-lift.webp';
-import siteClearanceImg from '../assets/concrete-pit-construction.webp';
-import heavyConstImg from '../assets/wall-saw-cutting-concrete.webp';
-import marineImg from '../assets/core-drilling-close-up.webp';
-import implosionImg from '../assets/stitch-drilling-holes.webp';
-import wireSawingImg from '../assets/wire-saw-large-cylinder.webp';
-import hydroImg from '../assets/floor-saw-cutting-2.webp';
-import coreImg from '../assets/core-drilling-worker.webp';
+import commercialDemoImg from '../assets/srv-commercial-demo.jpg';
+import siteClearanceImg from '../assets/srv-site-clearance.jpg';
+import heavyConstImg from '../assets/srv-heavy-cutting.jpg';
+import marineImg from '../assets/srv-marine-cutting.jpg';
+import implosionImg from '../assets/srv-implosion.jpg';
+import wireSawingImg from '../assets/srv-wire-sawing.jpg';
+import hydroImg from '../assets/srv-hydro-demo.jpg';
+import coreImg from '../assets/core-drilling-close-up.webp';
 
 import servicesHeroImg from '../assets/services-hero-premium.webp';
 
 const Services = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -49,7 +64,7 @@ const Services = () => {
           className="relative z-20 text-center px-6"
         >
           <h1 className="font-serif text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4 text-white drop-shadow-2xl">
-            Our <span className="text-brand-red">Capabilities</span>
+            Our <span className="text-brand-blue">Capabilities</span>
           </h1>
           <p className="font-sans text-xl text-gray-300 max-w-2xl mx-auto">
             Engineered solutions for the most complex demolition and structural modification challenges.
@@ -67,8 +82,9 @@ const Services = () => {
           {allServices.map((service, index) => (
             <motion.div 
               key={index} 
+              id={service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}
               variants={fadeInUp}
-              className="group relative bg-brand-card backdrop-blur-xl border border-white/5 rounded-2xl overflow-hidden hover:border-brand-red/50 transition-colors duration-500 flex flex-col sm:flex-row h-full"
+              className="group relative bg-brand-card backdrop-blur-xl border border-white/5 rounded-2xl overflow-hidden hover:border-brand-blue/50 transition-colors duration-500 flex flex-col sm:flex-row h-full"
             >
               {/* Image Section */}
               <div className="relative sm:w-2/5 h-64 sm:h-auto overflow-hidden">
@@ -82,7 +98,7 @@ const Services = () => {
 
               {/* Content Section */}
               <div className="p-8 sm:w-3/5 flex flex-col relative z-20">
-                <div className="w-12 h-12 bg-brand-red/10 rounded-xl flex items-center justify-center text-brand-red mb-6 group-hover:bg-brand-red group-hover:text-white transition-all duration-500">
+                <div className="w-12 h-12 bg-brand-blue/10 rounded-xl flex items-center justify-center text-brand-blue mb-6 group-hover:bg-brand-blue group-hover:text-white transition-all duration-500">
                   <service.icon size={24} />
                 </div>
                 <h3 className="font-serif text-2xl font-bold mb-4 uppercase">{service.title}</h3>
