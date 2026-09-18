@@ -46,10 +46,13 @@ const About = () => {
             <h2 className="font-serif text-3xl md:text-5xl font-black mb-8 uppercase">The Quadrill <span className="text-brand-blue">Standard</span></h2>
             <div className="space-y-6 font-sans text-gray-400 text-lg leading-relaxed">
               <p>
-                Established with a vision to redefine the demolition and concrete cutting landscape, Quadrill Demolition LLC is built on an uncompromising foundation of safety, precision, and technological superiority.
+                Quadrill Demolition LLC is a leading specialist in demolition, concrete cutting, and underwater cutting services across the UAE and international markets. With a highly trained team carrying more than 10 years of professional experience, we deliver safe, precise, and technically advanced solutions for industrial, commercial, marine, and oil & gas projects.
               </p>
               <p>
-                For over 10 years, our core team of engineers, operators, and safety specialists have executed some of the most complex structural modifications and dismantling projects across the United Arab Emirates and beyond. From deep underwater marine cutting to the tactical deconstruction of urban high-rises, we deliver where others cannot.
+                Our crew has successfully executed global-scale demolition and concrete cutting works, including complex structural removal, controlled demolition, heavy-duty concrete sawing, core drilling, and specialized underwater cutting operations. We are one of the few contractors equipped with the expertise and equipment required for underwater concrete cutting, making us a trusted partner for marine infrastructure, quay walls, bridges, ports, and offshore structures.
+              </p>
+              <p>
+                Quadrill Demolition LLC is committed to safety, engineering excellence, and reliable project delivery. Every project is executed with strict compliance to international standards, ensuring high-quality results, minimal disruption, and maximum efficiency. Our reputation is built on technical capability, experienced manpower, and consistent performance across diverse demolition and cutting environments.
               </p>
             </div>
             <div className="mt-12 grid grid-cols-2 gap-8">

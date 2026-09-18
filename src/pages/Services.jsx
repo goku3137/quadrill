@@ -43,14 +43,21 @@ const Services = () => {
   };
 
   const allServices = [
-    { icon: Hammer, title: "Commercial Demolition", desc: "Tactical dismantling of multi-story structures using heavy robotics and vibration-controlled techniques.", img: commercialDemoImg },
-    { icon: Factory, title: "Site Clearance & Remediation", desc: "Comprehensive debris removal, grading, and environmental remediation for large-scale developments.", img: siteClearanceImg },
-    { icon: Building2, title: "Heavy Concrete Cutting", desc: "Structural modifications and heavy-duty concrete cutting for complex industrial sites.", img: heavyConstImg },
-    { icon: Anchor, title: "Marine & Underwater Cutting", desc: "Specialized underwater cutting and dismantling for offshore platforms and port infrastructure.", img: marineImg },
-    { icon: HardHat, title: "Controlled Implosion", desc: "Engineered explosive demolition for rapid, safe structural collapse in dense urban environments.", img: implosionImg },
-    { icon: TriangleRight, title: "Diamond Wire Sawing", desc: "Advanced diamond wire technology for slicing through infinite depths of heavily reinforced concrete.", img: wireSawingImg },
-    { icon: Droplets, title: "Hydro Demolition", desc: "High-pressure water jetting for precise, non-vibratory concrete removal while preserving rebar.", img: hydroImg },
-    { icon: Zap, title: "Precision Core Drilling", desc: "Flawless circular penetrations through reinforced concrete and asphalt for MEP and utility routing.", img: coreImg }
+    { icon: Hammer, title: "Controlled Demolition", desc: "Safe and precise dismantling of structures using engineered methods. Ideal for industrial, commercial, and infrastructure projects requiring vibration-controlled and low-impact demolition.", img: commercialDemoImg },
+    { icon: Building2, title: "Concrete Cutting", desc: "High-precision concrete cutting using advanced machinery for structural modifications, openings, and heavy-duty removal. Suitable for construction, renovation, and industrial applications.", img: heavyConstImg },
+    { icon: Hammer, title: "Wall Sawing", desc: "Accurate cutting of reinforced concrete walls for doors, windows, shafts, and structural openings. Ensures clean, straight, and vibration-controlled cuts.", img: commercialDemoImg },
+    { icon: TriangleRight, title: "Wire Sawing", desc: "Specialized cutting for large, thick, or heavily reinforced concrete and steel structures. Ideal for bridges, columns, beams, foundations, and marine structures.", img: wireSawingImg },
+    { icon: Hammer, title: "Floor Sawing", desc: "Efficient cutting of concrete slabs, pavements, and industrial floors. Used for expansion joints, utility trenches, and controlled slab removal.", img: siteClearanceImg },
+    { icon: Zap, title: "Core Drilling", desc: "Precise circular openings in concrete and asphalt for MEP installations, anchor placements, utility penetrations, and structural adjustments.", img: coreImg },
+    { icon: Anchor, title: "Underwater Cutting", desc: "Advanced underwater concrete cutting for marine and offshore structures. Suitable for quay walls, jetties, bridge foundations, port infrastructure, and underwater demolition works.", img: marineImg },
+    { icon: Factory, title: "Structural Dismantling", desc: "Systematic dismantling of steel, concrete, and composite structures using engineered sequencing. Ensures safe removal of beams, slabs, columns, and heavy structural components.", img: siteClearanceImg },
+    { icon: Factory, title: "Industrial Demolition", desc: "Complete demolition solutions for factories, plants, warehouses, and industrial facilities. Includes machinery removal, foundation breaking, and structural dismantling with strict safety compliance.", img: commercialDemoImg },
+    { icon: Anchor, title: "Marine & Quay Wall Cutting", desc: "Specialized cutting solutions for marine infrastructure such as quay walls, breakwaters, jetties, and underwater structural components.", img: marineImg },
+    { icon: HardHat, title: "Concrete Breaking & Removal", desc: "Controlled breaking and removal using hydraulic breakers, robotic demolition machines, and cutting tools. Ideal for renovation, repair, and structural modification projects.", img: heavyConstImg },
+    { icon: HardHat, title: "Pile Trimming / Breaking", desc: "Professional pile trimming and breaking for construction foundations. Ensures accurate leveling and preparation of piles using safe and efficient breaking methods.", img: heavyConstImg },
+    { icon: Droplets, title: "Water Jetting / Hydro Demolition", desc: "High-pressure water jetting for precise and non-vibratory removal of damaged or deteriorated concrete. Hydro demolition protects structural integrity, avoids micro-cracks, and is ideal for bridges, tunnels, marine structures, and repair works requiring clean, controlled concrete removal.", img: hydroImg },
+    { icon: Factory, title: "Surface Preparation & Grinding", desc: "Industrial-grade grinding and surface preparation for concrete floors and slabs. Provides smooth, level surfaces ready for coatings, flooring, or new installations.", img: siteClearanceImg },
+    { icon: HardHat, title: "Technical Engineering Support", desc: "Complete engineering documentation including method statements, risk assessments, lifting plans, and project execution strategies. Ensures compliance with international safety and engineering standards.", img: implosionImg }
   ];
 
   return (

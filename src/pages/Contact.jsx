@@ -40,8 +40,8 @@ const Contact = () => {
                   <MapPin size={28} />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold mb-2">Location</h4>
-                  <p className="text-gray-400">Quadrill Demolition LLC<br/>Industrial Area 11, Sharjah<br/>United Arab Emirates</p>
+                  <h4 className="text-xl font-bold mb-2">Head Office</h4>
+                  <p className="text-gray-400">Mohammed Bin Zayed City<br/>Abu Dhabi<br/>United Arab Emirates</p>
                 </div>
               </div>
               
@@ -50,8 +50,8 @@ const Contact = () => {
                   <Phone size={28} />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold mb-2">Phone (24/7 Dispatch)</h4>
-                  <p className="text-gray-400">+971 50 234 0364</p>
+                  <h4 className="text-xl font-bold mb-2">Customer Relations</h4>
+                  <p className="text-gray-400">Amal K – Customer Relation Officer<br/>+971 50 234 0364</p>
                 </div>
               </div>
 

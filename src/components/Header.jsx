@@ -38,12 +38,8 @@ const Header = () => {
 
       {/* Main Nav */}
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link to="/" onClick={closeMenu} className="flex gap-2 items-center">
-          <img src="/logo.svg" alt="Quadrill Demolition Logo" className="h-10 md:h-12 w-auto" />
-          <div className="flex flex-col justify-center leading-none">
-            <span className="text-xl font-black tracking-widest text-white">QUADRILL</span>
-            <span className="text-[10px] font-bold tracking-[0.2em] text-brand-blue">DEMOLITION</span>
-          </div>
+        <Link to="/" onClick={closeMenu} className="flex items-center">
+          <img src="/logo.svg" alt="Quadrill Demolition Logo" className="h-16 md:h-20 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
