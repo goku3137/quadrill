@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+// import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+// import { db } from '../firebase';
 
 import projHeroImg from '../assets/projects-hero-premium.webp';
 import proj1Img from '../assets/proj-bridge-demo.jpg';
@@ -9,6 +11,36 @@ import proj3Img from '../assets/proj-downtown-mod.jpg';
 import proj4Img from '../assets/proj-underwater-cut.jpg';
 
 const Projects = () => {
+  // --- Admin/Firebase logic commented out for now ---
+  // const [projects, setProjects] = useState([]);
+  // const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   const fetchProjects = async () => {
+  //     try {
+  //       const q = query(collection(db, "projects"), orderBy("createdAt", "desc"));
+  //       const querySnapshot = await getDocs(q);
+  //       const projData = [];
+  //       querySnapshot.forEach((doc) => {
+  //         projData.push({ id: doc.id, ...doc.data() });
+  //       });
+  //       setProjects(projData);
+  //     } catch (error) {
+  //       console.error("Error fetching projects: ", error);
+  //     }
+  //     setLoading(false);
+  //   };
+  //   fetchProjects();
+  // }, []);
+
+  // Hardcoded old projects
+  const projects = [
+    { id: 1, title: "Dubai Marina Bridge Demolition", category: "Heavy Civil / Marine", imageUrl: proj1Img },
+    { id: 2, title: "Abu Dhabi Industrial Refinery Decommissioning", category: "Oil & Gas", imageUrl: proj2Img },
+    { id: 3, title: "Downtown Core Structural Modification", category: "Commercial", imageUrl: proj3Img },
+    { id: 4, title: "Sharjah Port Underwater Cutting", category: "Marine Infrastructure", imageUrl: proj4Img }
+  ];
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -22,15 +54,8 @@ const Projects = () => {
     }
   };
 
-  const projects = [
-    { title: "Dubai Marina Bridge Demolition", category: "Heavy Civil / Marine", img: proj1Img },
-    { title: "Abu Dhabi Industrial Refinery Decommissioning", category: "Oil & Gas", img: proj2Img },
-    { title: "Downtown Core Structural Modification", category: "Commercial", img: proj3Img },
-    { title: "Sharjah Port Underwater Cutting", category: "Marine Infrastructure", img: proj4Img }
-  ];
-
   return (
-    <div className="w-full bg-brand-dark overflow-hidden pt-24 pb-32">
+    <div className="w-full bg-brand-dark overflow-hidden pt-24 pb-32 min-h-screen">
       {/* Hero Section */}
       <section className="relative w-full h-[50vh] flex items-center justify-center overflow-hidden border-b border-white/10 mb-24">
         <div className="absolute inset-0 z-0 bg-brand-dark/80" />
@@ -55,14 +80,14 @@ const Projects = () => {
           variants={staggerContainer}
           className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12"
         >
-          {projects.map((proj, index) => (
+          {projects.map((proj) => (
             <motion.div 
-              key={index} 
+              key={proj.id} 
               variants={fadeInUp}
-              className="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer"
+              className="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer shadow-2xl"
             >
               <img 
-                src={proj.img} 
+                src={proj.imageUrl} 
                 alt={proj.title} 
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out"
               />

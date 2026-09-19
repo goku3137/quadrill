@@ -89,19 +89,25 @@ const Home = () => {
         >
           <motion.h1 
             variants={fadeInUp}
-            className="font-serif text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-tight uppercase"
+            className="font-serif text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-4 leading-tight uppercase"
           >
             ENGINEERED FOR <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-blue-800 drop-shadow-[0_0_15px_rgba(27,129,229,0.5)]">
               DESTRUCTION
             </span>
           </motion.h1>
+          <motion.h2
+            variants={fadeInUp}
+            className="text-sm md:text-base tracking-[0.2em] uppercase font-bold text-brand-blue mb-8"
+          >
+            Precision Demolition, Concrete & Underwater Cutting Specialists
+          </motion.h2>
           
           <motion.p 
             variants={fadeInUp}
             className="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto font-light leading-relaxed font-sans"
           >
-            Precision demolition, concrete cutting, and structural dismantling for complex industrial and marine environments. Experience the ultimate in destructive power and precision.
+            Quadrill Demolition LLC is a UAE-based specialist with 10+ years of professional team experience. We deliver safety, precision, experienced manpower, advanced machinery, underwater cutting capability, and international-standard execution.
           </motion.p>
           
           <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 justify-center items-center font-sans">
@@ -109,13 +115,13 @@ const Home = () => {
               to="/contact" 
               className="px-8 py-4 bg-brand-blue text-white font-bold tracking-widest uppercase rounded shadow-[0_0_20px_rgba(27,129,229,0.4)] hover:shadow-[0_0_30px_rgba(27,129,229,0.7)] hover:bg-blue-500 hover:-translate-y-1 transition-all duration-300"
             >
-              Initiate Project
+              Request a Quote
             </Link>
             <Link 
               to="/services" 
               className="px-8 py-4 bg-transparent border border-white/20 text-white font-bold tracking-widest uppercase rounded hover:bg-white/10 transition-all duration-300"
             >
-              Explore Capabilities
+              View Services
             </Link>
           </motion.div>
         </motion.div>
@@ -202,10 +208,11 @@ const Home = () => {
           className="max-w-4xl mx-auto px-6 text-center"
         >
           <div className="bg-brand-card backdrop-blur-xl border border-white/5 rounded-3xl p-10 md:p-16 hover:border-brand-blue/30 transition-colors duration-500">
-            <p className="font-serif text-2xl md:text-4xl font-light italic leading-relaxed text-gray-300 mb-8">
-              "Quadrill's approach to complex demolition is unmatched. Their precision cutting and rigorous safety standards kept our urban project ahead of schedule and risk-free."
-            </p>
-            <p className="font-sans text-brand-blue font-bold tracking-wider">— Director of Infrastructure, UAE</p>
+            <h3 className="font-serif text-3xl md:text-5xl font-black text-white mb-6 uppercase">Need a safe and reliable demolition partner?</h3>
+            <p className="font-sans text-gray-300 text-lg mb-8">Call us at +971 50 234 0364 or Email info@quadrilldemolition.com</p>
+            <Link to="/contact" className="px-8 py-4 bg-brand-blue text-white font-bold tracking-widest uppercase rounded shadow-[0_0_20px_rgba(27,129,229,0.4)] hover:bg-blue-500 transition-all duration-300">
+              Request a Quote
+            </Link>
           </div>
         </motion.div>
       </section>

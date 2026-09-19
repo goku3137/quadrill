@@ -14,6 +14,7 @@ import HSE from './pages/HSE';
 import Gallery from './pages/Gallery';
 import Careers from './pages/Careers';
 import Contact from './pages/Contact';
+import Admin from './pages/Admin';
 
 // Scrolls to top whenever the route changes, but skips if there's a hash anchor
 function ScrollToTop() {
@@ -52,6 +53,7 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
         <Footer />

@@ -1,5 +1,13 @@
-<svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
-  <path d="M 90 20 A 40 40 0 1 0 90 100 A 40 40 0 0 0 90 20 Z" fill="none" stroke="#ffffff" stroke-width="26" />
-  <path d="M 75 75 L 115 110" stroke="#ffffff" stroke-width="26" />
-  <path d="M 120 20 L 155 20 C 185 20 210 35 210 60 C 210 85 185 100 155 100 L 120 100" fill="none" stroke="#1B81E5" stroke-width="26" />
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(110, 20)">
+    <!-- Q part (using white for visibility on dark header) -->
+    <path d="M 90 20 A 40 40 0 1 0 90 100 A 40 40 0 0 0 90 20 Z" fill="none" stroke="#ffffff" stroke-width="26" />
+    <path d="M 75 75 L 115 110" stroke="#ffffff" stroke-width="26" stroke-linecap="square" />
+    <!-- D part -->
+    <path d="M 120 20 L 155 20 C 185 20 210 35 210 60 C 210 85 185 100 155 100 L 120 100" fill="none" stroke="#1B81E5" stroke-width="26" stroke-linecap="square" />
+  </g>
+  <text x="200" y="200" font-family="'Montserrat', 'Arial Black', sans-serif" font-weight="900" font-size="52" text-anchor="middle" letter-spacing="2">
+    <tspan fill="#ffffff">QUA</tspan><tspan fill="#1B81E5">D</tspan><tspan fill="#ffffff">RILL</tspan>
+  </text>
+  <text x="200" y="240" font-family="'Montserrat', 'Arial', sans-serif" font-weight="600" font-size="20" fill="#1B81E5" text-anchor="middle" letter-spacing="8">DEMOLITION</text>
 </svg>

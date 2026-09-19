@@ -1,0 +1,278 @@
+import React, { useState, useEffect } from 'react';
+import { auth, db, storage } from '../firebase';
+import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import { collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp, query, orderBy } from 'firebase/firestore';
+import { Trash2, Upload, Loader2, LogOut } from 'lucide-react';
+
+const IMGBB_API_KEY = "ec273bde44e838c43a81923f8c0242e2";
+
+const Admin = () => {
+  const [user, setUser] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  // Form State
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+  const [image, setImage] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+
+  // Projects State
+  const [projects, setProjects] = useState([]);
+  const [fetchingProjects, setFetchingProjects] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+      if (currentUser) {
+        fetchProjects();
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoginError('');
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      setLoginError(error.message);
+    }
+  };
+
+  const handleLogout = () => {
+    signOut(auth);
+  };
+
+  const fetchProjects = async () => {
+    setFetchingProjects(true);
+    try {
+      const q = query(collection(db, "projects"), orderBy("createdAt", "desc"));
+      const querySnapshot = await getDocs(q);
+      const projData = [];
+      querySnapshot.forEach((doc) => {
+        projData.push({ id: doc.id, ...doc.data() });
+      });
+      setProjects(projData);
+    } catch (error) {
+      console.error("Error fetching projects: ", error);
+    }
+    setFetchingProjects(false);
+  };
+
+  const handleImageChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+
+  const handleAddProject = async (e) => {
+    e.preventDefault();
+    if (!title || !category || !image) {
+      alert('Please fill all fields and select an image.');
+      return;
+    }
+
+    setUploading(true);
+    setUploadProgress(50); // Show intermediate progress
+
+    try {
+      // 1. Upload to ImgBB
+      const formData = new FormData();
+      formData.append('image', image);
+      
+      const imgbbRes = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+        method: 'POST',
+        body: formData
+      });
+      
+      const imgbbData = await imgbbRes.json();
+      
+      if (!imgbbData.success) {
+        throw new Error(imgbbData.error?.message || 'ImgBB Upload Failed');
+      }
+
+      const imageUrl = imgbbData.data.url;
+      const deleteUrl = imgbbData.data.delete_url; // Optional: store this if you want to implement deletion later
+
+      setUploadProgress(90);
+
+      // 2. Save to Firestore
+      await addDoc(collection(db, "projects"), {
+        title,
+        category,
+        imageUrl: imageUrl,
+        deleteUrl: deleteUrl || null,
+        createdAt: serverTimestamp()
+      });
+      
+      setTitle('');
+      setCategory('');
+      setImage(null);
+      setUploadProgress(0);
+      fetchProjects(); // Refresh list
+    } catch (error) {
+      console.error("Upload error: ", error);
+      alert('Failed to save project. Ensure your ImgBB API Key is correct and Firestore rules allow writes.');
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this project?")) {
+      try {
+        // Delete document from firestore
+        await deleteDoc(doc(db, "projects", id));
+        fetchProjects(); // Refresh list
+      } catch (error) {
+        console.error("Error deleting project: ", error);
+        alert("Failed to delete project.");
+      }
+    }
+  };
+
+  if (loading) {
+    return <div className="h-screen w-full flex items-center justify-center bg-brand-dark"><Loader2 className="animate-spin text-brand-blue" size={48} /></div>;
+  }
+
+  // --- LOGIN SCREEN ---
+  if (!user) {
+    return (
+      <div className="min-h-screen w-full bg-brand-dark pt-32 pb-20 px-6 flex items-center justify-center font-sans">
+        <div className="bg-brand-card border border-white/10 p-10 rounded-2xl w-full max-w-md shadow-2xl">
+          <h2 className="font-serif text-3xl font-black text-white uppercase text-center mb-8">Admin Access</h2>
+          {loginError && <p className="text-red-500 text-sm mb-4 text-center">{loginError}</p>}
+          <form onSubmit={handleLogin} className="flex flex-col gap-5">
+            <input 
+              type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required
+              className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-blue"
+            />
+            <input 
+              type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required
+              className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-blue"
+            />
+            <button type="submit" className="bg-brand-blue text-white font-bold py-3 rounded-lg hover:bg-blue-600 transition-colors mt-2">
+              Login
+            </button>
+          </form>
+          <p className="text-gray-500 text-xs text-center mt-6">
+            If you don't have an account, create a user in your Firebase Authentication console.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // --- DASHBOARD SCREEN ---
+  return (
+    <div className="min-h-screen w-full bg-brand-dark pt-32 pb-20 px-6 font-sans">
+      <div className="max-w-6xl mx-auto">
+        
+        <div className="flex justify-between items-center mb-12 border-b border-white/10 pb-6">
+          <h1 className="font-serif text-4xl font-black text-white uppercase">Project Dashboard</h1>
+          <button onClick={handleLogout} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+            <LogOut size={20} /> Logout
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          
+          {/* Add New Project Form */}
+          <div className="lg:col-span-1 bg-brand-card border border-white/10 p-8 rounded-2xl shadow-xl h-fit">
+            <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-wider border-b border-white/5 pb-4">Add New Project</h2>
+            <form onSubmit={handleAddProject} className="flex flex-col gap-5">
+              <div>
+                <label className="block text-gray-400 text-sm mb-2">Project Title</label>
+                <input 
+                  type="text" value={title} onChange={e => setTitle(e.target.value)} required
+                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-blue"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-400 text-sm mb-2">Category</label>
+                <select 
+                  value={category} onChange={e => setCategory(e.target.value)} required
+                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-blue appearance-none"
+                >
+                  <option value="" disabled>Select Category</option>
+                  <option value="Demolition">Demolition</option>
+                  <option value="Concrete Cutting">Concrete Cutting</option>
+                  <option value="Marine Works">Marine Works</option>
+                  <option value="Heavy Civil">Heavy Civil</option>
+                  <option value="Industrial">Industrial</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-gray-400 text-sm mb-2">Project Image</label>
+                <div className="w-full bg-black/50 border border-white/10 border-dashed rounded-lg px-4 py-6 text-center cursor-pointer hover:bg-white/5 transition-colors relative">
+                  <input 
+                    type="file" accept="image/*" onChange={handleImageChange} required
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  />
+                  <Upload className="mx-auto text-gray-400 mb-2" size={24} />
+                  <span className="text-gray-400 text-sm">
+                    {image ? image.name : "Click or drag image to upload"}
+                  </span>
+                </div>
+              </div>
+              
+              <button 
+                type="submit" disabled={uploading}
+                className="w-full bg-brand-blue text-white font-bold py-4 rounded-lg hover:bg-blue-600 transition-colors mt-4 flex items-center justify-center gap-2 uppercase tracking-widest disabled:opacity-50"
+              >
+                {uploading ? (
+                  <>Uploading... {Math.round(uploadProgress)}%</>
+                ) : (
+                  "Publish Project"
+                )}
+              </button>
+            </form>
+          </div>
+
+          {/* Existing Projects List */}
+          <div className="lg:col-span-2 bg-brand-card border border-white/10 p-8 rounded-2xl shadow-xl">
+            <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-wider border-b border-white/5 pb-4">Live Projects</h2>
+            
+            {fetchingProjects ? (
+              <div className="py-10 text-center text-gray-400 flex flex-col items-center">
+                <Loader2 className="animate-spin mb-2" /> Fetching projects...
+              </div>
+            ) : projects.length === 0 ? (
+              <div className="py-10 text-center text-gray-400">
+                No projects uploaded yet.
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {projects.map(proj => (
+                  <div key={proj.id} className="relative group rounded-xl overflow-hidden border border-white/10 aspect-video">
+                    <img src={proj.imageUrl} alt={proj.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4">
+                      <span className="text-brand-blue text-xs font-bold uppercase tracking-widest mb-1">{proj.category}</span>
+                      <h3 className="text-white font-bold leading-tight">{proj.title}</h3>
+                    </div>
+                    <button 
+                      onClick={() => handleDelete(proj.id)}
+                      className="absolute top-3 right-3 bg-red-600/90 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-700"
+                      title="Delete Project"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default Admin;
