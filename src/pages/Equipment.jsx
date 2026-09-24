@@ -1,6 +1,6 @@
-import React from 'react';
 import HeroBanner from '../components/HeroBanner';
-import { Settings, Zap, HardHat, ShieldCheck } from 'lucide-react';
+import { Settings } from 'lucide-react';
+import heroImg from '../assets/projects-hero-premium.webp';
 
 const EquipmentCard = ({ title, description, highlight }) => (
   <div style={{
