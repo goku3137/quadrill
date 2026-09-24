@@ -1,6 +1,6 @@
-import React from 'react';
 import HeroBanner from '../components/HeroBanner';
 import { Quote } from 'lucide-react';
+import heroImg from '../assets/home-hero-premium.webp';
 
 const MessageCard = ({ role, title, message }) => (
   <div style={{ 

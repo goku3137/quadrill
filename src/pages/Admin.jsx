@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { auth, db, storage } from '../firebase';
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
-import { collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp, query, orderBy } from 'firebase/firestore';
-import { Trash2, Upload, Loader2, LogOut } from 'lucide-react';
+import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, serverTimestamp, query, orderBy } from 'firebase/firestore';
+import { Trash2, Upload, Loader2, LogOut, Edit2 } from 'lucide-react';
 
 const IMGBB_API_KEY = "ec273bde44e838c43a81923f8c0242e2";
 
@@ -14,6 +14,7 @@ const Admin = () => {
   const [loading, setLoading] = useState(true);
 
   // Form State
+  const [editingId, setEditingId] = useState(null);
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [image, setImage] = useState(null);
@@ -23,6 +24,22 @@ const Admin = () => {
   // Projects State
   const [projects, setProjects] = useState([]);
   const [fetchingProjects, setFetchingProjects] = useState(true);
+
+  const fetchProjects = async () => {
+    setFetchingProjects(true);
+    try {
+      const q = query(collection(db, "projects"), orderBy("createdAt", "desc"));
+      const querySnapshot = await getDocs(q);
+      const projData = [];
+      querySnapshot.forEach((doc) => {
+        projData.push({ id: doc.id, ...doc.data() });
+      });
+      setProjects(projData);
+    } catch (error) {
+      console.error("Error fetching projects: ", error);
+    }
+    setFetchingProjects(false);
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -49,32 +66,36 @@ const Admin = () => {
     signOut(auth);
   };
 
-  const fetchProjects = async () => {
-    setFetchingProjects(true);
-    try {
-      const q = query(collection(db, "projects"), orderBy("createdAt", "desc"));
-      const querySnapshot = await getDocs(q);
-      const projData = [];
-      querySnapshot.forEach((doc) => {
-        projData.push({ id: doc.id, ...doc.data() });
-      });
-      setProjects(projData);
-    } catch (error) {
-      console.error("Error fetching projects: ", error);
-    }
-    setFetchingProjects(false);
-  };
-
   const handleImageChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
   };
 
-  const handleAddProject = async (e) => {
+  const handleEditClick = (proj) => {
+    setEditingId(proj.id);
+    setTitle(proj.title);
+    setCategory(proj.category);
+    setImage(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const cancelEdit = () => {
+    setEditingId(null);
+    setTitle('');
+    setCategory('');
+    setImage(null);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title || !category || !image) {
-      alert('Please fill all fields and select an image.');
+    if (!title || !category) {
+      alert('Please fill title and category fields.');
+      return;
+    }
+    
+    if (!editingId && !image) {
+      alert('Please select an image for the new project.');
       return;
     }
 
@@ -82,38 +103,51 @@ const Admin = () => {
     setUploadProgress(50); // Show intermediate progress
 
     try {
-      // 1. Upload to ImgBB
-      const formData = new FormData();
-      formData.append('image', image);
-      
-      const imgbbRes = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
-        method: 'POST',
-        body: formData
-      });
-      
-      const imgbbData = await imgbbRes.json();
-      
-      if (!imgbbData.success) {
-        throw new Error(imgbbData.error?.message || 'ImgBB Upload Failed');
+      let imageUrl = null;
+      let deleteUrl = null;
+
+      // 1. Upload to ImgBB only if there's a new image
+      if (image) {
+        const formData = new FormData();
+        formData.append('image', image);
+        
+        const imgbbRes = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+          method: 'POST',
+          body: formData
+        });
+        
+        const imgbbData = await imgbbRes.json();
+        
+        if (!imgbbData.success) {
+          throw new Error(imgbbData.error?.message || 'ImgBB Upload Failed');
+        }
+
+        imageUrl = imgbbData.data.url;
+        deleteUrl = imgbbData.data.delete_url;
       }
-
-      const imageUrl = imgbbData.data.url;
-      const deleteUrl = imgbbData.data.delete_url; // Optional: store this if you want to implement deletion later
-
+      
       setUploadProgress(90);
 
-      // 2. Save to Firestore
-      await addDoc(collection(db, "projects"), {
-        title,
-        category,
-        imageUrl: imageUrl,
-        deleteUrl: deleteUrl || null,
-        createdAt: serverTimestamp()
-      });
+      // 2. Save/Update to Firestore
+      if (editingId) {
+        const docRef = doc(db, "projects", editingId);
+        const updateData = { title, category };
+        if (imageUrl) {
+          updateData.imageUrl = imageUrl;
+          if (deleteUrl) updateData.deleteUrl = deleteUrl;
+        }
+        await updateDoc(docRef, updateData);
+      } else {
+        await addDoc(collection(db, "projects"), {
+          title,
+          category,
+          imageUrl: imageUrl,
+          deleteUrl: deleteUrl || null,
+          createdAt: serverTimestamp()
+        });
+      }
       
-      setTitle('');
-      setCategory('');
-      setImage(null);
+      cancelEdit();
       setUploadProgress(0);
       fetchProjects(); // Refresh list
     } catch (error) {
@@ -127,7 +161,6 @@ const Admin = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this project?")) {
       try {
-        // Delete document from firestore
         await deleteDoc(doc(db, "projects", id));
         fetchProjects(); // Refresh list
       } catch (error) {
@@ -183,10 +216,12 @@ const Admin = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           
-          {/* Add New Project Form */}
+          {/* Add/Edit Project Form */}
           <div className="lg:col-span-1 bg-brand-card border border-white/10 p-8 rounded-2xl shadow-xl h-fit">
-            <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-wider border-b border-white/5 pb-4">Add New Project</h2>
-            <form onSubmit={handleAddProject} className="flex flex-col gap-5">
+            <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-wider border-b border-white/5 pb-4">
+              {editingId ? "Edit Project" : "Add New Project"}
+            </h2>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div>
                 <label className="block text-gray-400 text-sm mb-2">Project Title</label>
                 <input 
@@ -209,29 +244,43 @@ const Admin = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-gray-400 text-sm mb-2">Project Image</label>
+                <label className="block text-gray-400 text-sm mb-2">Project Image {editingId && "(Optional)"}</label>
                 <div className="w-full bg-black/50 border border-white/10 border-dashed rounded-lg px-4 py-6 text-center cursor-pointer hover:bg-white/5 transition-colors relative">
                   <input 
-                    type="file" accept="image/*" onChange={handleImageChange} required
+                    type="file" accept="image/*" onChange={handleImageChange} required={!editingId}
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                   />
                   <Upload className="mx-auto text-gray-400 mb-2" size={24} />
                   <span className="text-gray-400 text-sm">
-                    {image ? image.name : "Click or drag image to upload"}
+                    {image ? image.name : editingId ? "Click to upload a new image" : "Click or drag image to upload"}
                   </span>
                 </div>
               </div>
               
-              <button 
-                type="submit" disabled={uploading}
-                className="w-full bg-brand-blue text-white font-bold py-4 rounded-lg hover:bg-blue-600 transition-colors mt-4 flex items-center justify-center gap-2 uppercase tracking-widest disabled:opacity-50"
-              >
-                {uploading ? (
-                  <>Uploading... {Math.round(uploadProgress)}%</>
-                ) : (
-                  "Publish Project"
+              <div className="flex gap-3 mt-4">
+                <button 
+                  type="submit" disabled={uploading}
+                  className="flex-1 bg-brand-blue text-white font-bold py-4 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center gap-2 uppercase tracking-widest disabled:opacity-50 text-sm"
+                >
+                  {uploading ? (
+                    <>Saving... {Math.round(uploadProgress)}%</>
+                  ) : editingId ? (
+                    "Update"
+                  ) : (
+                    "Publish"
+                  )}
+                </button>
+                {editingId && (
+                  <button
+                    type="button"
+                    onClick={cancelEdit}
+                    disabled={uploading}
+                    className="flex-1 bg-gray-600 text-white font-bold py-4 rounded-lg hover:bg-gray-500 transition-colors flex items-center justify-center gap-2 uppercase tracking-widest disabled:opacity-50 text-sm"
+                  >
+                    Cancel
+                  </button>
                 )}
-              </button>
+              </div>
             </form>
           </div>
 
@@ -256,13 +305,22 @@ const Admin = () => {
                       <span className="text-brand-blue text-xs font-bold uppercase tracking-widest mb-1">{proj.category}</span>
                       <h3 className="text-white font-bold leading-tight">{proj.title}</h3>
                     </div>
-                    <button 
-                      onClick={() => handleDelete(proj.id)}
-                      className="absolute top-3 right-3 bg-red-600/90 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-700"
-                      title="Delete Project"
-                    >
-                      <Trash2 size={16} />
-                    </button>
+                    <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button 
+                        onClick={() => handleEditClick(proj)}
+                        className="bg-brand-blue/90 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors"
+                        title="Edit Project"
+                      >
+                        <Edit2 size={16} />
+                      </button>
+                      <button 
+                        onClick={() => handleDelete(proj.id)}
+                        className="bg-red-600/90 text-white p-2 rounded-lg hover:bg-red-700 transition-colors"
+                        title="Delete Project"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
