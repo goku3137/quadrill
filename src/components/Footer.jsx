@@ -30,6 +30,7 @@ const Footer = () => {
             <li><Link to="/projects" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Portfolio</Link></li>
             <li><Link to="/hse" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Safety (HSE)</Link></li>
             <li><Link to="/contact" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Contact</Link></li>
+            <li><Link to="/admin" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Admin</Link></li>
           </ul>
         </div>
 
@@ -38,18 +39,18 @@ const Footer = () => {
           <h4 className="font-serif text-xl font-bold mb-6 uppercase tracking-wider">Our Specialties</h4>
           <ul className="flex flex-col gap-2 font-sans text-gray-400">
             <li><Link to="/services#controlled-demolition" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Controlled Demolition</Link></li>
-            <li><Link to="/services#conventional-demolition" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Conventional Demolition</Link></li>
+            <li><Link to="/services#industrial-demolition" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Conventional Demolition</Link></li>
             <li><Link to="/services#structural-dismantling" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Structural Dismantling</Link></li>
-            <li><Link to="/services#marine-demolition-removal" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Marine Demolition & Removal</Link></li>
-            <li><Link to="/services#underwater-concrete-cutting" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Underwater Concrete Cutting</Link></li>
-            <li><Link to="/services#pile-breaking-trimming" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Pile Breaking & Trimming</Link></li>
+            <li><Link to="/services#marine-quay-wall-cutting" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Marine Demolition & Removal</Link></li>
+            <li><Link to="/services#underwater-cutting" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Underwater Concrete Cutting</Link></li>
+            <li><Link to="/services#pile-trimming-breaking" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Pile Breaking & Trimming</Link></li>
             <li><Link to="/services#wall-sawing" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Wall Sawing</Link></li>
             <li><Link to="/services#wire-sawing" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Wire Sawing</Link></li>
             <li><Link to="/services#floor-sawing" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Floor Sawing</Link></li>
             <li><Link to="/services#core-drilling" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Core Drilling</Link></li>
-            <li><Link to="/services#chemical-anchoring" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Chemical Anchoring</Link></li>
-            <li><Link to="/services#excavation-works" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Excavation Works</Link></li>
-            <li><Link to="/services#concrete-scarifying-surface-preparation" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Concrete Scarifying</Link></li>
+            <li><Link to="/services" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Chemical Anchoring</Link></li>
+            <li><Link to="/services" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Excavation Works</Link></li>
+            <li><Link to="/services#surface-preparation-grinding" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Concrete Scarifying</Link></li>
           </ul>
         </div>
 
