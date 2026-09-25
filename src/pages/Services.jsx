@@ -11,8 +11,9 @@ import implosionImg from '../assets/srv-implosion.jpg';
 import wireSawingImg from '../assets/srv-wire-sawing.jpg';
 import hydroImg from '../assets/srv-hydro-demo.jpg';
 import coreImg from '../assets/core-drilling-close-up.webp';
+import controlledDemolitionImg from '../assets/controlled-demolition.jpg';
 
-import servicesHeroImg from '../assets/services-hero-premium.webp';
+import servicesHeroImg from '../assets/capabilities_hero_wide.jpg';
 
 const Services = () => {
   const location = useLocation();
@@ -43,8 +44,7 @@ const Services = () => {
   };
 
   const allServices = [
-    { icon: Hammer, title: "Controlled Demolition", desc: "Safe and precise dismantling of structures using engineered methods. Ideal for industrial, commercial, and infrastructure projects requiring vibration-controlled and low-impact demolition.", img: commercialDemoImg },
-    { icon: Building2, title: "Concrete Cutting", desc: "High-precision concrete cutting using advanced machinery for structural modifications, openings, and heavy-duty removal. Suitable for construction, renovation, and industrial applications.", img: heavyConstImg },
+    { icon: Hammer, title: "Controlled Demolition", desc: "Safe and precise dismantling of structures using engineered methods. Ideal for industrial, commercial, and infrastructure projects requiring vibration-controlled and low-impact demolition.", img: controlledDemolitionImg },
     { icon: Hammer, title: "Wall Sawing", desc: "Accurate cutting of reinforced concrete walls for doors, windows, shafts, and structural openings. Ensures clean, straight, and vibration-controlled cuts.", img: commercialDemoImg },
     { icon: TriangleRight, title: "Wire Sawing", desc: "Specialized cutting for large, thick, or heavily reinforced concrete and steel structures. Ideal for bridges, columns, beams, foundations, and marine structures.", img: wireSawingImg },
     { icon: Hammer, title: "Floor Sawing", desc: "Efficient cutting of concrete slabs, pavements, and industrial floors. Used for expansion joints, utility trenches, and controlled slab removal.", img: siteClearanceImg },
