@@ -185,10 +185,9 @@ const Home = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center mb-24 font-sans"
+          className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center mb-24 font-sans"
         >
           {[
-            { value: "500+", label: "Projects Completed" },
             { value: "Zero", label: "Safety Incidents" },
             { value: "10+", label: "Years Experience" },
             { value: "24/7", label: "Readiness" }
