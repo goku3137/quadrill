@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Target, Eye, Shield, Users } from 'lucide-react';
 import aboutHeroImg from '../assets/home-intro-premium.webp';
-import teamImg from '../assets/vertical-core-drill-setup.webp';
+import teamImg from '../assets/concrete-breaking-service.jpg';
 
 const About = () => {
   const fadeInUp = {

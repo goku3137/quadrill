@@ -35,12 +35,21 @@ const Footer = () => {
 
         {/* Services Links */}
         <div>
-          <h4 className="font-serif text-xl font-bold mb-6 uppercase tracking-wider">Specialties</h4>
-          <ul className="flex flex-col gap-4 font-sans text-gray-400">
-            <li><Link to="/services#commercial-demolition" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Commercial Demolition</Link></li>
-            <li><Link to="/services#diamond-wire-sawing" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Wire & Wall Sawing</Link></li>
-            <li><Link to="/services#precision-core-drilling" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Core Drilling</Link></li>
-            <li><Link to="/services#marine-underwater-cutting" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Marine Cutting</Link></li>
+          <h4 className="font-serif text-xl font-bold mb-6 uppercase tracking-wider">Our Specialties</h4>
+          <ul className="flex flex-col gap-2 font-sans text-gray-400">
+            <li><Link to="/services#controlled-demolition" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Controlled Demolition</Link></li>
+            <li><Link to="/services#conventional-demolition" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Conventional Demolition</Link></li>
+            <li><Link to="/services#structural-dismantling" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Structural Dismantling</Link></li>
+            <li><Link to="/services#marine-demolition-removal" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Marine Demolition & Removal</Link></li>
+            <li><Link to="/services#underwater-concrete-cutting" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Underwater Concrete Cutting</Link></li>
+            <li><Link to="/services#pile-breaking-trimming" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Pile Breaking & Trimming</Link></li>
+            <li><Link to="/services#wall-sawing" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Wall Sawing</Link></li>
+            <li><Link to="/services#wire-sawing" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Wire Sawing</Link></li>
+            <li><Link to="/services#floor-sawing" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Floor Sawing</Link></li>
+            <li><Link to="/services#core-drilling" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Core Drilling</Link></li>
+            <li><Link to="/services#chemical-anchoring" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Chemical Anchoring</Link></li>
+            <li><Link to="/services#excavation-works" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Excavation Works</Link></li>
+            <li><Link to="/services#concrete-scarifying-surface-preparation" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Concrete Scarifying</Link></li>
           </ul>
         </div>
 
@@ -50,7 +59,7 @@ const Footer = () => {
           <ul className="flex flex-col gap-4 font-sans text-gray-400">
             <li className="flex items-start gap-4">
               <MapPin className="text-brand-blue flex-shrink-0 mt-1" size={20} />
-              <span>Quadrill Demolition LLC<br/>Industrial Area 11, Sharjah, UAE</span>
+              <span>Quadrill Demolition LLC<br/>Mohammed Bin Zayed City, Abu Dhabi</span>
             </li>
             <li className="flex items-center gap-4">
               <Phone className="text-brand-blue flex-shrink-0" size={20} />

@@ -4,7 +4,7 @@ import { ExternalLink, Loader2 } from 'lucide-react';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../firebase';
 
-import projHeroImg from '../assets/projects-hero-premium.webp';
+import projHeroImg from '../assets/structural-dismantling-service.jpg';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
