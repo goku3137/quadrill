@@ -5,11 +5,11 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float, MeshDistortMaterial } from '@react-three/drei';
 import { Hammer, Factory, Anchor, Building2, HardHat, TriangleRight } from 'lucide-react';
 
-import commercialDemoImg from '../assets/structural-dismantling-service.jpg';
-import siteClearanceImg from '../assets/floor-sawing-service.jpg';
-import heavyConstImg from '../assets/concrete-breaking-service.jpg';
-import marineImg from '../assets/marine-quay-wall-service.jpg';
-import implosionImg from '../assets/pile-trimming-service.jpg';
+import structuralDismantlingImg from '../assets/structural-dismantling-service.jpg';
+import floorSawingImg from '../assets/floor-sawing-service.jpg';
+import concreteBreakingImg from '../assets/concrete-breaking-service.jpg';
+import marineQuayImg from '../assets/marine-quay-wall-service.jpg';
+import pileTrimmingImg from '../assets/pile-trimming-service.jpg';
 import wireSawingImg from '../assets/wire-sawing-service-updated.jpg';
 
 // 3D Animated Abstract Debris/Structure for the Hero
@@ -57,12 +57,12 @@ const Home = () => {
   };
 
   const services = [
-    { icon: Hammer, title: "Commercial Demolition", desc: "Tactical dismantling of multi-story structures using heavy robotics.", img: commercialDemoImg },
-    { icon: Factory, title: "Site Clearance", desc: "Comprehensive debris removal and grading for large-scale developments.", img: siteClearanceImg },
-    { icon: Building2, title: "Heavy Construction", desc: "Structural modifications and heavy-duty concrete cutting.", img: heavyConstImg },
-    { icon: Anchor, title: "Marine Demolition", desc: "Specialized underwater cutting for offshore platforms.", img: marineImg },
-    { icon: HardHat, title: "Controlled Implosion", desc: "Engineered explosive demolition for rapid, safe collapse.", img: implosionImg },
-    { icon: TriangleRight, title: "Wire Sawing", desc: "Diamond wire technology for slicing infinite depths.", img: wireSawingImg }
+    { icon: Building2, title: "Structural Dismantling", desc: "Systematic dismantling of steel, concrete, and composite structures using engineered sequencing. Ensures safe removal of beams, slabs, columns, and heavy structural components.", img: structuralDismantlingImg },
+    { icon: TriangleRight, title: "Floor Sawing", desc: "Efficient cutting of concrete slabs, pavements, and industrial floors. Used for expansion joints, utility trenches, and controlled slab removal.", img: floorSawingImg },
+    { icon: Hammer, title: "Concrete Breaking & Removal", desc: "Controlled breaking and removal using hydraulic breakers, robotic demolition machines, and cutting tools. Ideal for renovation, repair, and structural modification projects.", img: concreteBreakingImg },
+    { icon: Anchor, title: "Marine & Quay Wall Cutting", desc: "Specialized cutting solutions for marine infrastructure such as quay walls, breakwaters, jetties, and underwater structural components.", img: marineQuayImg },
+    { icon: HardHat, title: "Pile Trimming / Breaking", desc: "Professional pile trimming and breaking for construction foundations. Ensures accurate leveling and preparation of piles using safe and efficient breaking methods.", img: pileTrimmingImg },
+    { icon: Factory, title: "Wire Sawing", desc: "Specialized cutting for large, thick, or heavily reinforced concrete and steel structures. Ideal for bridges, columns, beams, foundations, and marine structures.", img: wireSawingImg }
   ];
 
   return (
@@ -136,8 +136,8 @@ const Home = () => {
           variants={fadeInUp}
           className="max-w-7xl mx-auto text-center mb-20"
         >
-          <h2 className="font-serif text-4xl md:text-6xl font-black tracking-tight mb-4 uppercase">OUR CAPABILITIES</h2>
-          <p className="font-sans text-gray-400 text-lg max-w-2xl mx-auto">Advanced solutions engineered for extreme precision and zero compromises.</p>
+          <h2 className="font-serif text-4xl md:text-6xl font-black tracking-tight mb-4 uppercase">Our Capabilities</h2>
+          <p className="font-sans text-gray-400 text-lg max-w-2xl mx-auto">Engineered solutions for the most complex demolition and structural modification challenges.</p>
         </motion.div>
         
         <motion.div 
@@ -175,6 +175,25 @@ const Home = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
           ))}
+        </motion.div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="relative w-full py-32 px-6 bg-brand-dark">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          className="max-w-7xl mx-auto text-center"
+        >
+          <h2 className="font-serif text-4xl md:text-6xl font-black tracking-tight mb-4 uppercase">OUR GALLERY</h2>
+          <p className="font-sans text-gray-400 text-lg max-w-2xl mx-auto mb-12">Visual showcase coming soon.</p>
+          
+          {/* Empty Gallery Grid Placeholder */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {/* Gallery items will be placed here */}
+          </div>
         </motion.div>
       </section>
 
