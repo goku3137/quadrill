@@ -3,14 +3,21 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float, MeshDistortMaterial } from '@react-three/drei';
-import { Hammer, Factory, Anchor, Building2, HardHat, TriangleRight } from 'lucide-react';
+import { Hammer, Factory, Anchor, Building2, HardHat, TriangleRight, Droplets, Zap } from 'lucide-react';
 
-import structuralDismantlingImg from '../assets/structural-dismantling-service.jpg';
-import floorSawingImg from '../assets/floor-sawing-service.jpg';
-import concreteBreakingImg from '../assets/concrete-breaking-service.jpg';
-import marineQuayImg from '../assets/marine-quay-wall-service.jpg';
-import pileTrimmingImg from '../assets/pile-trimming-service.jpg';
+import commercialDemoImg from '../assets/srv-commercial-demo.jpg';
+import marineImg from '../assets/srv-marine-cutting.jpg';
 import wireSawingImg from '../assets/wire-sawing-service-updated.jpg';
+import hydroImg from '../assets/srv-hydro-demo.jpg';
+import coreImg from '../assets/core-drilling-close-up.webp';
+import controlledDemolitionImg from '../assets/controlled-demolition.jpg';
+import wallSawingServiceImg from '../assets/wall-sawing-service.jpg';
+import floorSawingServiceImg from '../assets/floor-sawing-service.jpg';
+import structuralDismantlingImg from '../assets/structural-dismantling-service.jpg';
+import marineQuayWallServiceImg from '../assets/marine-quay-wall-service.jpg';
+import concreteBreakingServiceImg from '../assets/concrete-breaking-service.jpg';
+import pileTrimmingServiceImg from '../assets/pile-trimming-service.jpg';
+import surfacePreparationServiceImg from '../assets/surface-preparation-service.jpg';
 
 // 3D Animated Abstract Debris/Structure for the Hero
 const FloatingGeometry = () => {
@@ -57,12 +64,19 @@ const Home = () => {
   };
 
   const services = [
-    { icon: Building2, title: "Structural Dismantling", desc: "Systematic dismantling of steel, concrete, and composite structures using engineered sequencing. Ensures safe removal of beams, slabs, columns, and heavy structural components.", img: structuralDismantlingImg },
-    { icon: TriangleRight, title: "Floor Sawing", desc: "Efficient cutting of concrete slabs, pavements, and industrial floors. Used for expansion joints, utility trenches, and controlled slab removal.", img: floorSawingImg },
-    { icon: Hammer, title: "Concrete Breaking & Removal", desc: "Controlled breaking and removal using hydraulic breakers, robotic demolition machines, and cutting tools. Ideal for renovation, repair, and structural modification projects.", img: concreteBreakingImg },
-    { icon: Anchor, title: "Marine & Quay Wall Cutting", desc: "Specialized cutting solutions for marine infrastructure such as quay walls, breakwaters, jetties, and underwater structural components.", img: marineQuayImg },
-    { icon: HardHat, title: "Pile Trimming / Breaking", desc: "Professional pile trimming and breaking for construction foundations. Ensures accurate leveling and preparation of piles using safe and efficient breaking methods.", img: pileTrimmingImg },
-    { icon: Factory, title: "Wire Sawing", desc: "Specialized cutting for large, thick, or heavily reinforced concrete and steel structures. Ideal for bridges, columns, beams, foundations, and marine structures.", img: wireSawingImg }
+    { icon: Hammer, title: "Controlled Demolition", desc: "Safe and precise dismantling of structures using engineered methods. Ideal for industrial, commercial, and infrastructure projects requiring vibration-controlled and low-impact demolition.", img: controlledDemolitionImg },
+    { icon: Hammer, title: "Wall Sawing", desc: "Accurate cutting of reinforced concrete walls for doors, windows, shafts, and structural openings. Ensures clean, straight, and vibration-controlled cuts.", img: wallSawingServiceImg },
+    { icon: TriangleRight, title: "Wire Sawing", desc: "Specialized cutting for large, thick, or heavily reinforced concrete and steel structures. Ideal for bridges, columns, beams, foundations, and marine structures.", img: wireSawingImg },
+    { icon: Hammer, title: "Floor Sawing", desc: "Efficient cutting of concrete slabs, pavements, and industrial floors. Used for expansion joints, utility trenches, and controlled slab removal.", img: floorSawingServiceImg },
+    { icon: Zap, title: "Core Drilling", desc: "Precise circular openings in concrete and asphalt for MEP installations, anchor placements, utility penetrations, and structural adjustments.", img: coreImg },
+    { icon: Anchor, title: "Underwater Cutting", desc: "Advanced underwater concrete cutting for marine and offshore structures. Suitable for quay walls, jetties, bridge foundations, port infrastructure, and underwater demolition works.", img: marineImg },
+    { icon: Factory, title: "Structural Dismantling", desc: "Systematic dismantling of steel, concrete, and composite structures using engineered sequencing. Ensures safe removal of beams, slabs, columns, and heavy structural components.", img: structuralDismantlingImg },
+    { icon: Factory, title: "Industrial Demolition", desc: "Complete demolition solutions for factories, plants, warehouses, and industrial facilities. Includes machinery removal, foundation breaking, and structural dismantling with strict safety compliance.", img: commercialDemoImg },
+    { icon: Anchor, title: "Marine & Quay Wall Cutting", desc: "Specialized cutting solutions for marine infrastructure such as quay walls, breakwaters, jetties, and underwater structural components.", img: marineQuayWallServiceImg },
+    { icon: HardHat, title: "Concrete Breaking & Removal", desc: "Controlled breaking and removal using hydraulic breakers, robotic demolition machines, and cutting tools. Ideal for renovation, repair, and structural modification projects.", img: concreteBreakingServiceImg },
+    { icon: HardHat, title: "Pile Trimming / Breaking", desc: "Professional pile trimming and breaking for construction foundations. Ensures accurate leveling and preparation of piles using safe and efficient breaking methods.", img: pileTrimmingServiceImg },
+    { icon: Droplets, title: "Water Jetting / Hydro Demolition", desc: "High-pressure water jetting for precise and non-vibratory removal of damaged or deteriorated concrete. Hydro demolition protects structural integrity, avoids micro-cracks, and is ideal for bridges, tunnels, marine structures, and repair works requiring clean, controlled concrete removal.", img: hydroImg },
+    { icon: Factory, title: "Surface Preparation & Grinding", desc: "Industrial-grade grinding and surface preparation for concrete floors and slabs. Provides smooth, level surfaces ready for coatings, flooring, or new installations.", img: surfacePreparationServiceImg }
   ];
 
   return (
