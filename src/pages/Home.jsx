@@ -121,8 +121,7 @@ const Home = () => {
             variants={fadeInUp}
             className="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto font-light leading-relaxed font-sans"
           >
-            Quadrill Demolition LLC is a UAE-based specialist with 10+ years of professional team experience. We deliver safety, precision, experienced manpower, advanced machinery, underwater cutting capability, and international-standard execution.
-          </motion.p>
+            Quadrill Demolition LLC is a UAE-based specialist contractor backed by an experienced team with 10+ years of industry experience.          </motion.p>
           
           <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 justify-center items-center font-sans">
             <Link 
