@@ -67,7 +67,7 @@ const About = () => {
             </div>
           </motion.div>
           
-          <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeInUp} className="relative h-[600px] rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(27,129,229,0.1)]">
+          <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeInUp} className="relative h-[600px] rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(198,170,124,0.15)]">
             <img src={teamImg} alt="Engineering Team" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-80" />
           </motion.div>

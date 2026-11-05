@@ -36,7 +36,7 @@ const Contact = () => {
             <h2 className="font-serif text-3xl md:text-5xl font-black mb-8 uppercase">Headquarters</h2>
             <div className="space-y-8 font-sans">
               <div className="flex items-start gap-6 group">
-                <div className="w-16 h-16 bg-brand-card border border-white/5 rounded-2xl flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all shadow-[0_0_15px_rgba(27,129,229,0.1)]">
+                <div className="w-16 h-16 bg-brand-card border border-white/5 rounded-2xl flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-brand-dark transition-all shadow-[0_0_15px_rgba(198,170,124,0.15)]">
                   <MapPin size={28} />
                 </div>
                 <div>
@@ -46,7 +46,7 @@ const Contact = () => {
               </div>
               
               <div className="flex items-start gap-6 group">
-                <div className="w-16 h-16 bg-brand-card border border-white/5 rounded-2xl flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all shadow-[0_0_15px_rgba(27,129,229,0.1)]">
+                <div className="w-16 h-16 bg-brand-card border border-white/5 rounded-2xl flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-brand-dark transition-all shadow-[0_0_15px_rgba(198,170,124,0.15)]">
                   <Phone size={28} />
                 </div>
                 <div>
@@ -56,7 +56,7 @@ const Contact = () => {
               </div>
 
               <div className="flex items-start gap-6 group">
-                <div className="w-16 h-16 bg-brand-card border border-white/5 rounded-2xl flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all shadow-[0_0_15px_rgba(27,129,229,0.1)]">
+                <div className="w-16 h-16 bg-brand-card border border-white/5 rounded-2xl flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-brand-dark transition-all shadow-[0_0_15px_rgba(198,170,124,0.15)]">
                   <Mail size={28} />
                 </div>
                 <div>
@@ -72,13 +72,13 @@ const Contact = () => {
             <h3 className="font-serif text-2xl font-black uppercase mb-8">Request an Estimate</h3>
             <form className="flex flex-col gap-6 font-sans">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <input type="text" placeholder="First Name" className="bg-black/50 border border-white/10 rounded-lg px-6 py-4 text-white focus:outline-none focus:border-brand-blue transition-colors" />
-                <input type="text" placeholder="Last Name" className="bg-black/50 border border-white/10 rounded-lg px-6 py-4 text-white focus:outline-none focus:border-brand-blue transition-colors" />
+                <input type="text" placeholder="First Name" className="bg-[#050C1A]/80 border border-white/20 rounded-lg px-6 py-4 text-white placeholder:text-gray-400 focus:outline-none focus:border-brand-blue transition-colors" />
+                <input type="text" placeholder="Last Name" className="bg-[#050C1A]/80 border border-white/20 rounded-lg px-6 py-4 text-white placeholder:text-gray-400 focus:outline-none focus:border-brand-blue transition-colors" />
               </div>
-              <input type="email" placeholder="Email Address" className="bg-black/50 border border-white/10 rounded-lg px-6 py-4 text-white focus:outline-none focus:border-brand-blue transition-colors" />
-              <input type="tel" placeholder="Phone Number" className="bg-black/50 border border-white/10 rounded-lg px-6 py-4 text-white focus:outline-none focus:border-brand-blue transition-colors" />
-              <textarea placeholder="Project Details & Requirements" rows={5} className="bg-black/50 border border-white/10 rounded-lg px-6 py-4 text-white focus:outline-none focus:border-brand-blue transition-colors resize-none"></textarea>
-              <button type="button" className="group flex items-center justify-center gap-3 bg-brand-blue text-white px-8 py-5 rounded-lg font-bold uppercase tracking-widest hover:bg-blue-500 shadow-[0_0_20px_rgba(27,129,229,0.3)] hover:shadow-[0_0_30px_rgba(27,129,229,0.6)] transition-all">
+              <input type="email" placeholder="Email Address" className="bg-[#050C1A]/80 border border-white/20 rounded-lg px-6 py-4 text-white placeholder:text-gray-400 focus:outline-none focus:border-brand-blue transition-colors" />
+              <input type="tel" placeholder="Phone Number" className="bg-[#050C1A]/80 border border-white/20 rounded-lg px-6 py-4 text-white placeholder:text-gray-400 focus:outline-none focus:border-brand-blue transition-colors" />
+              <textarea placeholder="Project Details & Requirements" rows={5} className="bg-[#050C1A]/80 border border-white/20 rounded-lg px-6 py-4 text-white placeholder:text-gray-400 focus:outline-none focus:border-brand-blue transition-colors resize-none"></textarea>
+              <button type="button" className="group flex items-center justify-center gap-3 bg-brand-blue text-brand-dark px-8 py-5 rounded-lg font-black uppercase tracking-widest hover:bg-brand-gold-hover shadow-[0_0_20px_rgba(198,170,124,0.3)] hover:shadow-[0_0_30px_rgba(198,170,124,0.6)] transition-all">
                 Send Message <Send size={20} className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </button>
             </form>

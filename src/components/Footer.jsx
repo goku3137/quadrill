@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, ChevronRight } from 'lucide-react';
+import { MapPin, Phone, Mail, ChevronRight, Download } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -30,6 +30,7 @@ const Footer = () => {
             <li><Link to="/projects" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Portfolio</Link></li>
             <li><Link to="/hse" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Safety (HSE)</Link></li>
             <li><Link to="/contact" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Contact</Link></li>
+            <li><a href="/Quadrill_Demolition_Brochure.pdf" download="Quadrill_Demolition_Brochure.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue transition-colors flex items-center gap-2 text-gray-300 hover:text-white"><Download size={16} className="text-brand-blue flex-shrink-0" /> Download Brochure</a></li>
             <li><Link to="/admin" className="hover:text-brand-blue transition-colors flex items-center gap-2"><ChevronRight size={16}/> Admin</Link></li>
           </ul>
         </div>

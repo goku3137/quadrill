@@ -1,0 +1,9 @@
+<svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(-40, 10)">
+    <!-- Q part -->
+    <path d="M 85 20 A 38 38 0 1 0 85 96 A 38 38 0 0 0 85 20 Z" fill="none" stroke="#ffffff" stroke-width="22" />
+    <path d="M 72 72 L 108 104" stroke="#ffffff" stroke-width="22" stroke-linecap="round" />
+    <!-- D part (Gold from brochure theme) -->
+    <path d="M 112 20 L 145 20 C 175 20 198 35 198 58 C 198 81 175 96 145 96 L 112 96" fill="none" stroke="#C6AA7C" stroke-width="22" stroke-linecap="round" />
+  </g>
+</svg>

@@ -7,13 +7,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        'brand-dark': '#070709',
-        'brand-card': 'rgba(25, 25, 30, 0.6)',
-        'brand-blue': '#1B81E5',
-        'brand-blue-glow': 'rgba(27, 129, 229, 0.4)',
+        'brand-dark': '#081226',
+        'brand-navy': '#10244C',
+        'brand-card': 'rgba(13, 27, 54, 0.7)',
+        'brand-gold': '#C6AA7C',
+        'brand-gold-hover': '#D8BE93',
+        'brand-blue': '#C6AA7C',
+        'brand-blue-glow': 'rgba(198, 170, 124, 0.35)',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Outfit', 'Inter', 'sans-serif'],
+        serif: ['Cinzel', 'serif'],
       }
     },
   },

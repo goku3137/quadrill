@@ -111,7 +111,7 @@ const Services = () => {
 
               {/* Content Section */}
               <div className="p-8 sm:w-3/5 flex flex-col relative z-20">
-                <div className="w-12 h-12 bg-brand-blue/10 rounded-xl flex items-center justify-center text-brand-blue mb-6 group-hover:bg-brand-blue group-hover:text-white transition-all duration-500">
+                <div className="w-12 h-12 bg-brand-blue/10 rounded-xl flex items-center justify-center text-brand-blue mb-6 group-hover:bg-brand-blue group-hover:text-brand-dark transition-all duration-500">
                   <service.icon size={24} />
                 </div>
                 <h3 className="font-serif text-2xl font-bold mb-4 uppercase">{service.title}</h3>
