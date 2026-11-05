@@ -190,7 +190,7 @@ const Admin = () => {
               type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required
               className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-blue"
             />
-            <button type="submit" className="bg-brand-blue text-white font-bold py-3 rounded-lg hover:bg-blue-600 transition-colors mt-2">
+            <button type="submit" className="bg-brand-blue text-brand-dark font-black py-3 rounded-lg hover:bg-brand-gold-hover transition-colors mt-2">
               Login
             </button>
           </form>
@@ -260,7 +260,7 @@ const Admin = () => {
               <div className="flex gap-3 mt-4">
                 <button 
                   type="submit" disabled={uploading}
-                  className="flex-1 bg-brand-blue text-white font-bold py-4 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center gap-2 uppercase tracking-widest disabled:opacity-50 text-sm"
+                  className="flex-1 bg-brand-blue text-brand-dark font-black py-4 rounded-lg hover:bg-brand-gold-hover transition-colors flex items-center justify-center gap-2 uppercase tracking-widest disabled:opacity-50 text-sm shadow-md"
                 >
                   {uploading ? (
                     <>Saving... {Math.round(uploadProgress)}%</>

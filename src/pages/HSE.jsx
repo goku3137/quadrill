@@ -17,7 +17,7 @@ const HseStep = ({ number, icon: Icon, title, desc, delay }) => (
       {number}
     </div>
     <div className="flex items-start gap-4 relative z-10">
-      <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center group-hover:bg-brand-blue group-hover:text-white transition-all duration-300">
+      <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center group-hover:bg-brand-blue group-hover:text-brand-dark transition-all duration-300">
         <Icon size={28} />
       </div>
       <div>
@@ -51,7 +51,7 @@ const HSE = () => {
             Uncompromised safety across all project environments. Zero incidents mindset.
           </p>
           <div className="mt-8">
-            <Link to="/contact" className="inline-block px-8 py-4 font-sans font-bold uppercase tracking-wider text-white bg-brand-blue border-brand-blue border-2 hover:bg-transparent transition-colors duration-300 rounded">
+            <Link to="/contact" className="inline-block px-8 py-4 font-sans font-bold uppercase tracking-wider text-brand-dark bg-brand-blue border-brand-blue border-2 hover:bg-transparent hover:text-brand-blue transition-colors duration-300 rounded shadow-lg">
               Discuss Safety Requirements
             </Link>
           </div>
@@ -94,7 +94,7 @@ const HSE = () => {
                 </li>
               ))}
             </ul>
-            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 font-sans font-bold uppercase tracking-wider text-brand-dark bg-white hover:bg-brand-blue hover:text-white transition-colors duration-300 rounded shadow-md">
+            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 font-sans font-bold uppercase tracking-wider text-brand-dark bg-white hover:bg-brand-blue hover:text-brand-dark transition-colors duration-300 rounded shadow-md">
               Contact HSE Manager
             </Link>
           </motion.div>
@@ -173,7 +173,7 @@ const HSE = () => {
               Our HSE Manager and engineering team are ready to review your site conditions and provide a compliant, safety-first execution plan.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center font-sans">
-              <Link to="/contact" className="w-full sm:w-auto px-8 py-4 font-bold uppercase tracking-wider text-white bg-brand-blue border-2 border-brand-blue hover:bg-transparent transition-colors duration-300 rounded">
+              <Link to="/contact" className="w-full sm:w-auto px-8 py-4 font-bold uppercase tracking-wider text-brand-dark bg-brand-blue border-2 border-brand-blue hover:bg-transparent hover:text-brand-blue transition-colors duration-300 rounded shadow-lg">
                 Contact Our HSE Team
               </Link>
               <a href="tel:+971502340364" className="w-full sm:w-auto px-8 py-4 font-bold uppercase tracking-wider text-white border-2 border-white/20 hover:border-white transition-colors duration-300 rounded">
